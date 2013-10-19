@@ -1,5 +1,6 @@
 dotfiles
 ========
+ supported setting: **gVim, git, sublime text 2**
 
 install
 -------
