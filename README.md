@@ -4,5 +4,9 @@ dotfiles
 
 install
 -------
-    git clone https://github.com/leafbird/dotfiles %userprofile%\dotfiles
+	windows:
+    	git clone https://github.com/leafbird/dotfiles %userprofile%\dotfiles
+
+	OS X:
+    	git clone https://github.com/leafbird/dotfiles ~/dotfiles
   
