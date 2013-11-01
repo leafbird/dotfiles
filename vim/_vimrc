@@ -51,8 +51,6 @@ set ignorecase
 set smartcase
 
 
-set bdir=$VIM/vimback
-
 map <F7> :set encoding=cp949<CR>
 map <F8> :set encoding=utf-8<CR>
 

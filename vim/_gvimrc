@@ -32,3 +32,5 @@ winpos 0 0
 set lines=100
 set columns=180
 
+set bdir=$VIM/vimback
+set bdir=$VIM/vimback

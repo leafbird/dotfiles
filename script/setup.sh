@@ -8,8 +8,9 @@ ln -s ~/dotfiles/osx/.profile ~/.profile
 ln -s ~/dotfiles/osx/.bash_profile ~/.bash_profile
 
 echo "create gitconfig symbolic link"
+rm ~/.gitconfig
 ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
 
 echo "create vimrc symbolic link"
+rm ~/.vimrc
 ln -s ~/dotfiles/vim/_vimrc ~/.vimrc
-ln -s ~/dotfiles/vim/_gvimrc ~/.gvimrc
