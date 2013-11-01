@@ -28,3 +28,7 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
+winpos 0 0
+set lines=100
+set columns=180
+
