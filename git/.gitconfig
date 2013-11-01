@@ -1,7 +1,5 @@
 [user]
 	name = choi sung ki
 	email = florist.sk@gmail.com
-[core]
-	autocrlf = true
 [push]
 	default = simple
