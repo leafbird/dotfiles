@@ -40,7 +40,10 @@ hi Ignore         guifg=#000000
 hi Error          term=reverse guifg=#FFFFFF guibg=#FF9999
 hi Todo           term=standout guifg=#000000 guibg=#999933
 
-set autoindent
+"set autoindent 
+set smartindent     " 스마트 들여쓰기
+set nobackup        " 백업파일을 만들지 않는다
+set cul             " highlight current line
 
 set sw=4
 set tabstop=4
