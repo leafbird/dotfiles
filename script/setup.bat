@@ -1,8 +1,5 @@
 @echo off
 
-@echo set home
-setx HOME %userprofile%
-
 @echo create gitconfig symbolic link
 mklink %userprofile%\.gitconfig %userprofile%\dotfiles\git\.gitconfig
 
