@@ -5,3 +5,7 @@
 	default = simple
 [color]
 	ui = true
+[diff]
+    tool = vimdiff
+[alias]
+    dt = difftool
