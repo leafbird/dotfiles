@@ -9,3 +9,5 @@
     tool = vimdiff
 [alias]
     dt = difftool
+[difftool]
+    prompt = false
