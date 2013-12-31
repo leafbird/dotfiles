@@ -23,11 +23,11 @@ hi WarningMsg     guifg=#FF9999
 hi WildMenu       guifg=#000000 guibg=#999933
 hi Folded         guifg=#99FFFF guibg=#666666
 hi FoldColumn     guifg=#99FFFF guibg=#666666
-hi DiffAdd        guibg=#9999FF
-hi DiffChange     guibg=#FF99FF
+"hi DiffAdd        guibg=#9999FF
+"hi DiffChange     guibg=#FF99FF
 
-hi DiffDelete     term=bold guifg=#9999FF guibg=#99FFFF
-hi DiffText       term=reverse guibg=#FF9999
+"hi DiffDelete     term=bold guifg=#9999FF guibg=#99FFFF
+"hi DiffText       term=reverse guibg=#FF9999
 hi Comment        term=bold guifg=#99FFFF
 hi Constant       term=underline guifg=#FF99FF
 hi Special        term=bold guifg=#FF9999
@@ -43,7 +43,7 @@ hi Todo           term=standout guifg=#000000 guibg=#999933
 "set autoindent 
 set smartindent     " 스마트 들여쓰기
 set nobackup        " 백업파일을 만들지 않는다
-set cul             " highlight current line
+"set cul             " highlight current line
 
 set sw=4
 set tabstop=4
