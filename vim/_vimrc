@@ -43,6 +43,8 @@ hi Todo           term=standout guifg=#000000 guibg=#999933
 "set autoindent 
 set smartindent     " 스마트 들여쓰기
 set nobackup        " 백업파일을 만들지 않는다
+set nowritebackup
+"set noswapfile      " swp 파일을 만들지 않는다
 "set cul             " highlight current line
 
 set sw=4
