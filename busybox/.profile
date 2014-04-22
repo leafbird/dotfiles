@@ -9,8 +9,6 @@ umask 022
 #        stty erase
 #fi
 
-HOME=/volume1/homes/leafbird
-export HOME
 
 TERM=${TERM:-cons25}
 export TERM
