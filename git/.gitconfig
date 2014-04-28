@@ -1,3 +1,5 @@
+[core]
+    askpass = true
 [user]
 	name = leafbird
 	email = florist.sk@gmail.com
