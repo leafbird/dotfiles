@@ -51,6 +51,14 @@ set sw=4
 set tabstop=4
 set expandtab
 
+set ruler          " show status
+"set cursorline          " highlight current line
+set laststatus=2   " show statusline always
+set wildmenu
+set statusline=%<%F\ \ %h%m%r%y%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",Bomb\":\",NoBomb\").\"]\ \"}%k
+set statusline+=%=
+set statusline+=\ %-14.(Line:%l\/%L,Col:%c%V%)\ %P
+
 "검색시 대소문자 무시
 set ignorecase
 set smartcase
