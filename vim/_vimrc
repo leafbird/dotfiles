@@ -55,6 +55,10 @@ set expandtab
 set ignorecase
 set smartcase
 
+"인코딩 설정
+set encoding=utf-8
+set fileencoding=utf-8
+
 
 map <F7> :set encoding=cp949<CR>
 map <F8> :set encoding=utf-8<CR>
