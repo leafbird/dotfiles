@@ -1,5 +1,6 @@
 [core]
     askpass = true
+    editor = gvim
 [user]
 	name = leafbird
 	email = florist.sk@gmail.com
