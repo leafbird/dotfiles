@@ -19,3 +19,5 @@
     confilictstyle = diff3
 [mergetool]
     prompt = false
+[format]
+    pretty = format:%h %s
