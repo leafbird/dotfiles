@@ -47,9 +47,9 @@ set nowritebackup
 "set noswapfile      " swp 파일을 만들지 않는다
 "set cul             " highlight current line
 
-set sw=4
-set tabstop=4
-set expandtab
+set sw=2           " size of an 'indent' 
+set tabstop=2      " size of a hard tabstop 
+set expandtab      " always uses spaces instead of tab characters
 
 set ruler          " show status
 "set cursorline          " highlight current line
