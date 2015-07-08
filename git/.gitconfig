@@ -20,4 +20,4 @@
 [mergetool]
     prompt = false
 [format]
-    pretty = format:%h %s
+    pretty = format:%h %ai %s
