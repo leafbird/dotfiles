@@ -1,6 +1,6 @@
 [core]
-    askpass = true
-    editor = gvim
+  askpass = true
+  editor = gvim
 [user]
 	name = leafbird
 	email = florist.sk@gmail.com
@@ -9,15 +9,15 @@
 [color]
 	ui = true
 [diff]
-    tool = gvimdiff
+  tool = gvimdiff
 [alias]
-    dt = difftool
+  dt = difftool
 [difftool]
-    prompt = false
+  prompt = false
 [merge]
-    tool = gvimdiff
-    confilictstyle = diff3
+  tool = gvimdiff
+  confilictstyle = diff3
 [mergetool]
-    prompt = false
+  prompt = false
 [format]
-    pretty = format:%h %ai %s
+  pretty = format:%h %ai %s
