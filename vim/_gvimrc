@@ -10,3 +10,5 @@ set columns=190
 
 set nobackup    " 백업파일을 만들지 않음. vimrc_example.vim보다 늦게 와야 함.
 "set backupdir=C:/vimback
+
+set guifont=consolas:h12
