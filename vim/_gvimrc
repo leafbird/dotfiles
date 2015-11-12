@@ -1,4 +1,4 @@
-set nocompatible
+ï»¿set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -8,7 +8,8 @@ winpos 0 0
 set lines=100
 set columns=190
 
-set nobackup    " ¹é¾÷ÆÄÀÏÀ» ¸¸µéÁö ¾ÊÀ½. vimrc_example.vimº¸´Ù ´Ê°Ô ¿Í¾ß ÇÔ.
+set nobackup    " ë°±ì—…íŒŒì¼ì„ ë§Œë“¤ì§€ ì•ŠìŒ. vimrc_example.vimë³´ë‹¤ ëŠ¦ê²Œ ì™€ì•¼ í•¨.
 "set backupdir=C:/vimback
 
-set guifont=consolas:h12
+set guifont=Consolas:h11:cANSI
+set guifontwide=Dotumche:h11:cDEFAULT

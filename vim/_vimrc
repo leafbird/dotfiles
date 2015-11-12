@@ -67,6 +67,7 @@ set smartcase
 set encoding=utf-8
 set fileencoding=utf-8
 
+:let $LANG='en' " set english message
 
 map <F7> :set encoding=cp949<CR>
 map <F8> :set encoding=utf-8<CR>
