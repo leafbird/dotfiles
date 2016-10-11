@@ -6,7 +6,7 @@ behave mswin
 
 winpos 0 0
 set lines=100
-set columns=190
+set columns=230
 
 set nobackup    " 백업파일을 만들지 않음. vimrc_example.vim보다 늦게 와야 함.
 "set backupdir=C:/vimback
