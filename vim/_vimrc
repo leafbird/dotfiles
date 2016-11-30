@@ -46,6 +46,7 @@ set nobackup        " 백업파일을 만들지 않는다
 set nowritebackup
 "set noswapfile      " swp 파일을 만들지 않는다
 "set cul             " highlight current line
+set number         " 라인넘버 출력
 
 set sw=2           " size of an 'indent' 
 set tabstop=2      " size of a hard tabstop 
