@@ -11,5 +11,7 @@ set columns=230
 set nobackup    " 백업파일을 만들지 않음. vimrc_example.vim보다 늦게 와야 함.
 "set backupdir=C:/vimback
 
+set noundofile " un~ 파일을 만들지 않음.
+
 set guifont=Consolas:h11:cANSI
 set guifontwide=Dotumche:h11:cDEFAULT
