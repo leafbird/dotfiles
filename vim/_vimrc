@@ -74,6 +74,7 @@ map <F7> :set encoding=cp949<CR>
 map <F8> :set encoding=utf-8<CR>
 
     
+" mac terminal 에서 block cursor 설정
 if &term =~ '^xterm'
   " normal mode
   let &t_EI .= "\<Esc>[0 q"
