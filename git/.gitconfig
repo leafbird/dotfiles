@@ -21,3 +21,5 @@
   prompt = false
 [format]
   pretty = format:%h %ai %cn %s
+[pull]
+	rebase = true
