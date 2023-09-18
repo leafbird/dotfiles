@@ -19,3 +19,5 @@
 파일.Perforce.P4VS.Revision_Graph : Ctrl + Shift + R
 
 파일.Perforce.P4VS.Timelapse_View : Ctrl + Shift + T
+
+디버그.조사식추가 : Alt + W
