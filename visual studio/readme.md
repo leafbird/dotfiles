@@ -1,4 +1,21 @@
-## visual studio settings
+## .vssettings 파일은 폐기
 
-* Exported-2017-08-07.vssettings : 금태형 작업 시작하기 전에 기본으로 쓰던 설정. c++ / c# 모두 이터널의 컨벤션과 최대한 유사하다.
-* Exported-2017-08-08.vssettings : 금태형 code 에 맞춰 c# 서식 일부 변경.
+지금은 vs 자체에 설정 동기화 기능이 있어 굳이 설정 백업은 남기지 않는다.
+
+대신 extension 사용 등으로 주요 설정이 망가졌을 때 참고할 수 있도록 개인 설정에 대한 메모만 유지한다.
+
+
+
+## 개인 설정 키보드 단축키
+
+창.부동 : Shift + Alt + F
+
+창.주문서그럽으로이동 : Shift + Alt + G
+
+창.이전문서그룹으로이동 : Ctrl + Alt + 왼쪽 화살표
+
+창.다음문서그룹으로이동 : Ctrl + Alt + 오른쪽 화살표
+
+파일.Perforce.P4VS.Revision_Graph : Ctrl + Shift + R
+
+파일.Perforce.P4VS.Timelapse_View : Ctrl + Shift + T
