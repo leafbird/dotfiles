@@ -27,3 +27,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[safe]
+	directory = D:/Dev/blog
+	directory = D:/Dev/bside
+	directory = D:/Dev/devnote
