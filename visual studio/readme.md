@@ -21,3 +21,5 @@
 파일.Perforce.P4VS.Timelapse_View : Ctrl + Shift + T
 
 디버그.조사식추가 : Alt + W
+
+빌드.선택영역빌드 : F7
