@@ -41,12 +41,12 @@ hi Error          term=reverse guifg=#FFFFFF guibg=#FF9999
 hi Todo           term=standout guifg=#000000 guibg=#999933
 
 "set autoindent 
-set smartindent     " ½º¸¶Æ® µé¿©¾²±â
-set nobackup        " ¹é¾÷ÆÄÀÏÀ» ¸¸µéÁö ¾Ê´Â´Ù
+set smartindent     " ï¿½ï¿½ï¿½ï¿½Æ® ï¿½é¿©ï¿½ï¿½ï¿½ï¿½
+set nobackup        " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½
 set nowritebackup
-"set noswapfile      " swp ÆÄÀÏÀ» ¸¸µéÁö ¾Ê´Â´Ù
+"set noswapfile      " swp ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½
 "set cul             " highlight current line
-set number         " ¶óÀÎ³Ñ¹ö Ãâ·Â
+set number         " ï¿½ï¿½ï¿½Î³Ñ¹ï¿½ ï¿½ï¿½ï¿½
 
 set sw=2           " size of an 'indent' 
 set tabstop=2      " size of a hard tabstop 
@@ -60,11 +60,15 @@ set statusline=%<%F\ \ %h%m%r%y%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb
 set statusline+=%=
 set statusline+=\ %-14.(Line:%l\/%L,Col:%c%V%)\ %P
 
-"°Ë»ö½Ã ´ë¼Ò¹®ÀÚ ¹«½Ã
-set ignorecase
-set smartcase
+"ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+set ignorecase " ignore case when searching
+" set smartcase " ignore case when searching lowercase
 
-"ÀÎÄÚµù ¼³Á¤
+set incsearch " search as characters are entered
+set hlsearch " highlight matches
+
+
+"ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
 set encoding=utf-8
 set fileencoding=utf-8
 
@@ -74,7 +78,7 @@ map <F7> :set encoding=cp949<CR>
 map <F8> :set encoding=utf-8<CR>
 
     
-" mac terminal ¿¡¼­ block cursor ¼³Á¤
+" mac terminal ï¿½ï¿½ï¿½ï¿½ block cursor ï¿½ï¿½ï¿½ï¿½
 if &term =~ '^xterm'
   " normal mode
   let &t_EI .= "\<Esc>[0 q"
