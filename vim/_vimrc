@@ -86,3 +86,11 @@ if &term =~ '^xterm'
   let &t_SI .= "\<Esc>[6 q"
 endif
 
+" syntax highlighting
+syntax enable
+if has("syntax")
+  syntax on
+endif
+
+" buffer space on cursor's upside.
+set scrolloff=3
