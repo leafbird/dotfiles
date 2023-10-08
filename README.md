@@ -1,12 +1,17 @@
-dotfiles
-========
- supported setting: **vim, gVim, git**
+## dotfiles
 
-install
--------
-	windows:
-    	git clone https://github.com/leafbird/dotfiles %userprofile%\dotfiles
+supported setting: **vim, gVim, git**
 
-	OS X:
-    	git clone https://github.com/leafbird/dotfiles ~/dotfiles
-  
+![](./screenshots/mac_terminal.png)
+
+### install
+
+windows:
+```
+git clone https://github.com/leafbird/dotfiles %userprofile%\dotfiles
+```
+
+osx:
+```
+git clone https://github.com/leafbird/dotfiles ~/dotfiles
+```
