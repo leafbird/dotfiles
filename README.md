@@ -17,4 +17,3 @@ osx:
 ```
 git clone https://github.com/leafbird/dotfiles ~/dotfiles
 ```
-![Alt text](image.png)
