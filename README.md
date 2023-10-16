@@ -4,6 +4,8 @@ supported setting: **vim, gVim, git**
 
 ![](./screenshots/mac_terminal.png)
 
+![](./screenshots/win_terminal.png)
+
 ### install
 
 windows:
@@ -15,3 +17,4 @@ osx:
 ```
 git clone https://github.com/leafbird/dotfiles ~/dotfiles
 ```
+![Alt text](image.png)
