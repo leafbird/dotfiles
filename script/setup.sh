@@ -10,3 +10,4 @@ ln -s ~/dotfiles/osx/agnoster.zsh-theme ~/.oh-my-zsh/themes/agnoster.zsh-theme
 ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/vim/_vimrc ~/.vimrc
 
+pwsh ../pwsh/setup.ps1
