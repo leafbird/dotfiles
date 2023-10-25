@@ -102,12 +102,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# 프롬프트 모양 설정
 prompt_context() {
   emojis=("🚀")
   prompt_segment black default "leafbird ${emojis}"
 }
 
+# 플러그인 설정
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# os logo & hardware info
 neofetch
+
+# sh 실행시 파일의 위치를 실행 경로로 지정
+export SH_EXEC_PATH=$(dirname $(readlink -f "$0"))
 
