@@ -94,3 +94,5 @@ endif
 
 " buffer space on cursor's upside.
 set scrolloff=3
+
+set textwidth=140
