@@ -41,12 +41,12 @@ hi Error          term=reverse guifg=#FFFFFF guibg=#FF9999
 hi Todo           term=standout guifg=#000000 guibg=#999933
 
 "set autoindent 
-set smartindent     " ����Ʈ �鿩����
-set nobackup        " ��������� ������ �ʴ´�
+set smartindent     " 스마트 들여쓰기
+set nobackup        " 백업파일을 만들지 않는다
 set nowritebackup
-"set noswapfile      " swp ������ ������ �ʴ´�
+"set noswapfile      " swp 파일을 만들지 않는다
 "set cul             " highlight current line
-set number         " ���γѹ� ���
+set number         " 라인넘버 출력
 
 set sw=2           " size of an 'indent' 
 set tabstop=2      " size of a hard tabstop 
@@ -60,7 +60,7 @@ set statusline=%<%F\ \ %h%m%r%y%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb
 set statusline+=%=
 set statusline+=\ %-14.(Line:%l\/%L,Col:%c%V%)\ %P
 
-"�˻��� ��ҹ��� ����
+" 검색시 대소문자 무시
 set ignorecase " ignore case when searching
 " set smartcase " ignore case when searching lowercase
 
@@ -68,7 +68,7 @@ set incsearch " search as characters are entered
 set hlsearch " highlight matches
 
 
-"���ڵ� ����
+" 인코딩 설정
 set encoding=utf-8
 set fileencoding=utf-8
 
@@ -78,7 +78,7 @@ map <F7> :set encoding=cp949<CR>
 map <F8> :set encoding=utf-8<CR>
 
     
-" mac terminal ���� block cursor ����
+" mac terminal 에서 block cursor 설정
 if &term =~ '^xterm'
   " normal mode
   let &t_EI .= "\<Esc>[0 q"
