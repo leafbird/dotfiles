@@ -95,4 +95,6 @@ endif
 " buffer space on cursor's upside.
 set scrolloff=3
 
-set textwidth=140
+" ignore auto newline
+set nowrap
+set textwidth=0
