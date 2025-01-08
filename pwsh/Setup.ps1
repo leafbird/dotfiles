@@ -15,7 +15,7 @@ if (-Not (Test-Path -Path $sourcePath)) {
 Write-Output "파워쉘 설정을 시작합니다. profile path: $profile"
 
 # 백업할 프로필 파일의 경로와 백업 파일 경로를 설정합니다.
-$backupPath = "$RPROFILE.bak"
+$backupPath = "$PROFILE.bak"
 
 # 백업 파일이 이미 존재하면 덮어쓰지 않도록 합니다.
 if (-Not (Test-Path -Path $backupPath -PathType Leaf)) {

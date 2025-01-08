@@ -2,7 +2,7 @@
   askpass = true
   editor = code --wait
 [user]
-	name = choi sung ki
+	name = choisungki
 	email = florist.sk@gmail.com
 [push]
 	default = simple
