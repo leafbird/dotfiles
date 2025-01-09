@@ -34,3 +34,7 @@ Host ClientBuild09
 	HostName ST-ClientBuild09.bside.com
 	User buildman
 
+Host LINUX-GAME01
+	HostName 172.16.10.140
+	User stardev
+
