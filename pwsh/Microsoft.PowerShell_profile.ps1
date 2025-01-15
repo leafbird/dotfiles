@@ -3,6 +3,11 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-E
 # 실행시간이 너무 길어서 제거
 # neofetch
 
+# Ensure posh-git module is installed and loaded
+if (-not (Get-Module -ListAvailable -Name PsFzf)) {
+    Install-Module -Name PsFzf -Scope CurrentUser -Force
+}
+
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PsFzfOption -TabExpansion
 
