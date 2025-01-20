@@ -25,5 +25,8 @@ if not exist "%directory%" (
 @echo create init.vim symbolic link
 mklink %userprofile%\.config\nvim\init.vim %userprofile%\dotfiles\vim\nvim.init
 
+@echo create .wslconfig link
+mklink %userprofile%\.wslconfig %userprofile%\dotfiles\wsl\.wslconfig
+
 popd
 pause
