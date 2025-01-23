@@ -38,3 +38,19 @@ Host LINUX-GAME01
 	HostName 172.16.10.140
 	User stardev
 
+Host ST-Build04
+	HostName 172.16.10.85
+	User administrator
+
+Host ST-Build05
+	HostName 172.16.10.86
+	User administrator
+
+Host ST-Build06
+	HostName 172.16.10.87
+	User administrator
+
+Host ST-Build07
+	HostName 172.16.10.88
+	User administrator
+
