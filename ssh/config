@@ -1,3 +1,4 @@
+# 클라이언트 빌드머신 -------------------------
 Host ClientBuild01
 	HostName ST-ClientBuild01.bside.com
 	User buildman
@@ -34,10 +35,7 @@ Host ClientBuild09
 	HostName ST-ClientBuild09.bside.com
 	User buildman
 
-Host LINUX-GAME01
-	HostName 172.16.10.140
-	User stardev
-
+# 서버 빌드머신 -------------------------
 Host ST-Build04
 	HostName 172.16.10.85
 	User administrator
@@ -54,3 +52,12 @@ Host ST-Build07
 	HostName 172.16.10.88
 	User administrator
 
+# 리눅스 테스트 서버 -------------------------
+Host linux-game01
+	HostName 172.16.10.140
+	User stardev
+
+# 사내 서비스용 서버 -------------------------
+Host dev-server01
+	HostName ST-DEV-SERVER01.bside.com
+	User administrator
