@@ -44,13 +44,9 @@ Host ST-Build05
 	HostName 172.16.10.86
 	User administrator
 
-Host ST-Build06
-	HostName 172.16.10.87
-	User administrator
-
-Host ST-Build07
-	HostName 172.16.10.88
-	User administrator
+Host ST-Build08
+	HostName 172.16.10.188
+	User stardev
 
 # 리눅스 테스트 서버 -------------------------
 Host linux-game01
