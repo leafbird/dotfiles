@@ -1,13 +1,17 @@
-local mapkey = require("utils.keyMapper").mapKey
+local mapKey = require("utils.keyMapper").mapKey
 
 -- Neotree toggle
-mapkey("<leader>e", ":Neotree toggle<CR>")
+mapKey("<leader>e", ":Neotree toggle<CR>")
 
 -- pane navigation
-mapkey("<C-h>", "<C-w>h") -- move to the pane on the left
-mapkey("<C-j>", "<C-w>j") -- move to the pane below
-mapkey("<C-k>", "<C-w>k") -- move to the pane above
-mapkey("<C-l>", "<C-w>l") -- move to the pane on the right
+mapKey("<C-h>", "<C-w>h") -- move to the pane on the left
+mapKey("<C-j>", "<C-w>j") -- move to the pane below
+mapKey("<C-k>", "<C-w>k") -- move to the pane above
+mapKey("<C-l>", "<C-w>l") -- move to the pane on the right
 
 -- clear search highlights
-mapkey("<leader>h", ":nohlsearch<CR>")
+mapKey("<leader>h", ":nohlsearch<CR>")
+
+-- indent
+mapKey('<', '<gv', 'v')
+mapKey('>', '>gv', 'v')
