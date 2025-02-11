@@ -17,8 +17,8 @@ mklink %userprofile%\_gvimrc %userprofile%\dotfiles\vim\_gvimrc
 
 pwsh ..\pwsh\setup.ps1
 
-@echo create init.vim symbolic link
-mklink /j %userprofile%\AppData\Local\nvim %userprofile%\dotfiles\nvim
+@echo create neovim symbolic link
+mklink /j %userprofile%\AppData\Local\nvim %userprofile%\dotfiles\nvim\.config\nvim
 
 @echo create .wslconfig link
 mklink %userprofile%\.wslconfig %userprofile%\dotfiles\wsl\.wslconfig
