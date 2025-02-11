@@ -19,10 +19,6 @@ Host ClientBuild05
 	HostName ST-ClientBuild05.bside.com
 	User buildman
 
-Host ClientBuild06
-	HostName ST-ClientBuild06.bside.com
-	User buildman
-
 Host ClientBuild07
 	HostName ST-ClientBuild07.bside.com
 	User buildman
@@ -40,15 +36,15 @@ Host ClientBuild10
 	User buildman
 
 # 서버 빌드머신 -------------------------
-Host ST-Build04
-	HostName 172.16.10.85
-	User administrator
-
-Host ST-Build05
-	HostName 172.16.10.86
-	User administrator
-
 Host ST-Build08
+	HostName 172.16.10.188
+	User stardev
+
+Host ST-Build09
+	HostName 172.16.10.188
+	User stardev
+
+Host ST-Build10
 	HostName 172.16.10.188
 	User stardev
 
