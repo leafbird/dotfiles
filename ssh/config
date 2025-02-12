@@ -41,17 +41,22 @@ Host ST-Build08
 	User stardev
 
 Host ST-Build09
-	HostName 172.16.10.188
+	HostName 172.16.10.189
 	User stardev
 
 Host ST-Build10
-	HostName 172.16.10.188
+	HostName 172.16.10.190
 	User stardev
 
 # 리눅스 테스트 서버 -------------------------
 Host linux-game01
 	HostName 172.16.10.140
 	User stardev
+
+# 윈도우 테스트 서버 -------------------------
+Host ST-QA-Public3
+	HostName 172.16.10.41
+	User ST-QA-Public
 
 # 사내 서비스용 서버 -------------------------
 Host dev-server01
