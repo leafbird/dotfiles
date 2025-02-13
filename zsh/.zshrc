@@ -101,12 +101,7 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# 프롬프트 모양 설정
-prompt_context() {
-  emojis=("🚀")
-  prompt_segment black default "leafbird ${emojis}"
-}
-
+# init auto completion
 autoload -U compinit && compinit
 
 # starship
