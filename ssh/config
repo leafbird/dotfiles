@@ -58,6 +58,10 @@ Host ST-QA-Public3
 	HostName 172.16.10.41
 	User ST-QA-Public
 
+Host ST-QA-Public4
+	HostName 172.16.10.42
+	User ST-QA-Public
+
 # 사내 서비스용 서버 -------------------------
 Host dev-server01
 	HostName ST-DEV-SERVER01.bside.com
