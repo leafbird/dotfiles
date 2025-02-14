@@ -37,3 +37,12 @@ function Enable-Fzf {
     $script:stopwatch.Stop()
     Write-Host "소요 시간: $($script:stopwatch.ElapsedMilliseconds)ms"
 }
+
+if ($host.Name -eq 'ConsoleHost')
+{
+    Import-Module PSReadLine
+
+	Set-PSReadLineOption -EditMode Windows
+	Set-PSReadLineOption -PredictionViewStyle ListView
+	Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+}
