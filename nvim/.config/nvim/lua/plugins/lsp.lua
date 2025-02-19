@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { "lua_ls", "csharp_ls" }
+        ensure_installed = { "lua_ls" }
       })
     end
   },
@@ -20,7 +20,6 @@ return {
     config = function()
       local lspconfig = require('lspconfig')
       lspconfig.lua_ls.setup({})
-      lspconfig.csharp_ls.setup({})
 
       keyMapper('K', vim.lsp.buf.hover)
       keyMapper('gd', vim.lsp.buf.definition) -- goto definition
