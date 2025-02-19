@@ -56,7 +56,7 @@ Host linux-game01
 Host ST-BuildWatch
 	HostName 172.16.100.30
 	Port 23
-	User stardev
+	User buildman
 
 # 윈도우 테스트 서버 -------------------------
 Host ST-QA-Public3
