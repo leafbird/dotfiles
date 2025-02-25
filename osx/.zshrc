@@ -70,7 +70,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-completions)
+plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,9 +107,6 @@ prompt_context() {
   prompt_segment black default "leafbird ${emojis}"
 }
 
-# 플러그인 설정
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 autoload -U compinit && compinit
 
 # fzf setting
@@ -129,6 +126,7 @@ function mc() {
 alias h='cd ~'
 alias c='clear'
 alias l='eza -lah' # or 'ls -lah'
+alias lt='eza -lT'
 
 # note taking
 function note() {
