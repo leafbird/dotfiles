@@ -109,9 +109,7 @@ prompt_context() {
 # 플러그인 설정
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# os logo & hardware info
-# fastfetch
-
+# fzf setting
 source <(fzf --zsh)
 
 # rc 파일을 열고, 적용
