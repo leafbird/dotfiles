@@ -1,5 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -117,8 +115,8 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source <(fzf --zsh)
 
 # rc 파일을 열고, 적용
-alias rc = 'nvim ~/.zshrc'
-alias s = 'source ~/.zshrc'
+alias rc='nvim ~/.zshrc'
+alias s='source ~/.zshrc'
 
 # 디렉토리 이동
 function mc() {
@@ -127,9 +125,9 @@ function mc() {
 }
 
 # alias 설정
-alias h = 'cd ~'
-alias c = 'clear'
-alias l = 'eza -lah' # or 'ls -lah'
+alias h='cd ~'
+alias c='clear'
+alias l='eza -lah' # or 'ls -lah'
 
 # note taking
 function note() {
@@ -146,6 +144,14 @@ function notes() {
   fi
 }
 
+# what is my ip
+function myip() {
+  curl http://ipecho.net/plain; echo
+}
+
+# google
+alias google='{read -r arr; open "https://www.google.com/search?q=${arr}"} <<<'
+
 # git add, commit, push
 # $1: commit message
 # $2: branch name
@@ -158,7 +164,24 @@ function gitacp() {
   git push origin $2
 }
 
-# what is my ip
-function myip() {
-  curl http://ipecho.net/plain; echo
-}
+alias gs='git rev-parse --git-dir > /dev/null 2>&1 && git status || eza'
+alias ga='git add'
+alias gaa='git add .'
+alias gpo='git push -u origin'
+alias gc='git commit -m'
+alias gco='git checkout'
+alias gb='git branch'
+alias gba='git branch --all'
+alias gbd='git branch -D'
+alias gcp='git cherry-pick'
+alias gd='git diff -w'
+alias gu='git reset --soft HEAD~1'
+alias gpr='git remote prune origin'
+alias ff='gpr && git pull --ff-only'
+alias grd='git fetch origin && git rebase origin/$(git rev-parse --abbrev-ref HEAD)'
+alias gbb='git-switchbranch'
+alias gbf='git branch | head -1 | xargs' # top branch
+alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias gl='git log --oneline --graph --all'
