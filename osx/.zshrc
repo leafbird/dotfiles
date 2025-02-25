@@ -115,3 +115,50 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # fastfetch
 
 source <(fzf --zsh)
+
+# rc 파일을 열고, 적용
+alias rc = 'nvim ~/.zshrc'
+alias s = 'source ~/.zshrc'
+
+# 디렉토리 이동
+function mc() {
+  mkdir -p $1
+  cd $1
+}
+
+# alias 설정
+alias h = 'cd ~'
+alias c = 'clear'
+alias l = 'eza -lah' # or 'ls -lah'
+
+# note taking
+function note() {
+  echo "$(date) $*" >> ~/notes.txt
+  echo "Note '$*' saved." >> ~/notes.txt
+  echo " " >> ~/notes.txt
+}
+
+function notes() {
+  if [ -f ~/notes.txt ]; then
+    cat ~/notes.txt
+  else
+    echo "No notes found."
+  fi
+}
+
+# git add, commit, push
+# $1: commit message
+# $2: branch name
+#
+# gitacp "commit message" "branch name"
+# gitacp "update README.md" "main"
+function gitacp() {
+  git add .
+  git commit -m "$1"
+  git push origin $2
+}
+
+# what is my ip
+function myip() {
+  curl http://ipecho.net/plain; echo
+}
