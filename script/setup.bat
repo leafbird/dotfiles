@@ -23,5 +23,8 @@ mklink /j %userprofile%\AppData\Local\nvim %userprofile%\dotfiles\nvim\.config\n
 @echo create .wslconfig link
 mklink %userprofile%\.wslconfig %userprofile%\dotfiles\wsl\.wslconfig
 
+@echo create starship config
+mklink %userprofile%\.config\starship.toml %userprofile%\dotfiles\starship\.config\starship.toml
+
 popd
 pause

@@ -1,7 +1,55 @@
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-Expression
+# oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-Expression
 
+# starship
+$ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
+Invoke-Expression (&starship init powershell)
+
+# alias
+Set-Alias -Name vi -Value nvim
+Set-Alias -Name vim -Value nvim
+
+# rc 파일을 열고, 적용
+function rc() { nvim $PROFILE }
+function s() { . $PROFILE }
+
+Write-Output "hello world"
+
+# 디렉토리 이동
+function mc() {
+  mkdir -p $args[0]
+  cd $args[0]
+}
+
+function h() { cd $env:USERPROFILE }
+Set-Alias -Name c -Value "cls"
+function l() { eza -lah }
+function lt() { eza -lT }
+
+# what is my ip
+function myip() {
+  curl http://ipecho.net/plain
+}
+
+# google
+function google() {
+  Start-Process "https://www.google.com/search?q=$args"
+}
+
+# git add, commit, push
+# args[0]: commit message
+# args[1]: branch name
+#
+# gitacp "commit message" "branch name"
+# gitacp "update README.md" "main"
+function gitacp() {
+  git add .
+  git commit -m "$args[0]"
+  git push origin $args[1]
+}
+
+
+# fzf
 $script:enableFzf = $false
-
 function Enable-Fzf {
     if ($script:enableFzf) {
         Write-Host "Fzf가 이미 활성화되어 있습니다."

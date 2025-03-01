@@ -1,0 +1,26 @@
+## winget install list
+
+```
+winget install `
+  balena.etcher `
+  microsoft.powershell `
+  neovim.neovim `
+  git.git `
+  starship.starship `
+  bandisoft.bandizip `
+  junegunn.fzf `
+  jamsoftware.treesize `
+  github.githubdesktip `
+  SlackTechnologies.Slack `
+  Ollama.Ollama `
+  Warp.Warp `
+  vim.vim ` 
+  OpenJS.NodeJS `
+  eza-community.eza `
+```
+
+## don't use winget
+
+* visual studio 2022
+* visual studio code
+
