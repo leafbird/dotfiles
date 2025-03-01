@@ -1,3 +1,5 @@
+2025-03-01 : 시스템 재설치 하면서 설치한 프로그램 정리.
+
 ## winget install list
 
 ```
@@ -19,6 +21,8 @@ winget install `
   eza-community.eza `
   JesseDuffield.lazygit `
   Golang.Go `
+  Perforce.P4V `
+  sxyazi.yazi `
 ```
 
 ## don't use winget
