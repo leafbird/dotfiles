@@ -17,6 +17,8 @@ winget install `
   vim.vim ` 
   OpenJS.NodeJS `
   eza-community.eza `
+  JesseDuffield.lazygit `
+  Golang.Go `
 ```
 
 ## don't use winget

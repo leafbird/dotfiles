@@ -12,8 +12,6 @@ Set-Alias -Name vim -Value nvim
 function rc() { nvim $PROFILE }
 function s() { . $PROFILE }
 
-Write-Output "hello world"
-
 # 디렉토리 이동
 function mc() {
   mkdir -p $args[0]
@@ -47,6 +45,39 @@ function gitacp() {
   git push origin $args[1]
 }
 
+<#
+# translate below to powershell - not working. should define as function
+alias gs='git rev-parse --git-dir > /dev/null 2>&1 && git status || eza'
+alias ga='git add'
+alias gaa='git add .'
+alias gpo='git push -u origin'
+alias gc='git commit -m'
+alias gco='git checkout'
+alias gb='git branch'
+alias gba='git branch --all'
+alias gbd='git branch -D'
+alias gcp='git cherry-pick'
+alias gd='git diff -w'
+alias gu='git reset --soft HEAD~1'
+alias gpr='git remote prune origin'
+alias ff='gpr && git pull --ff-only'
+alias grd='git fetch origin && git rebase origin/$(git rev-parse --abbrev-ref HEAD)'
+alias gbb='git-switchbranch'
+alias gbf='git branch | head -1 | xargs' # top branch
+alias git-current-branch="git branch | grep \* | cut -d ' ' -f2"
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias gl='git log --oneline --graph --all'
+#>
+
+function gs() {
+  # check if git directory
+  if (git rev-parse --git-dir 2>$null) {
+    git status
+  } else {
+    eza
+  }
+}
 
 # fzf
 $script:enableFzf = $false
