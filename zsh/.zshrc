@@ -30,7 +30,7 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# init auto completion
+# zsh-completions
 autoload -U compinit && compinit
 
 # starship
@@ -115,3 +115,5 @@ alias gl='git log --oneline --graph --all'
 batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
+
+fastfetch
