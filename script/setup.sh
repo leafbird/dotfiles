@@ -21,11 +21,4 @@ ln -s ~/dotfiles/ssh/config ~/.ssh/config
 # ------- pwsh 설정 -------
 pwsh ~/dotfiles/pwsh/setup.ps1
 
-# ------- nvim 설정 -------
-# ~/.config 아래에 nvim 폴더가 없으면 만듭니다.
-if [ ! -d ~/.config/nvim ]; then
-  mkdir ~/.config/nvim
-fi
-
-mv ~/.config/nvim/nvim.init ~/.config/nvim/nvim.init.bak
-ln -s ~/dotfiles/vim/nvim.init ~/.config/nvim/nvim.init
+# nvim, starship 등은 stow로 개별 설정합니다.

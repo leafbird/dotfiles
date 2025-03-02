@@ -23,10 +23,11 @@ winget install `
   Golang.Go `
   Perforce.P4V `
   sxyazi.yazi `
+  kakao.kakaotalk `
+  AutoHotkey.AutoHotkey `
 ```
 
 ## don't use winget
 
 * visual studio 2022
 * visual studio code
-
