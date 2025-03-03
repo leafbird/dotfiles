@@ -4,7 +4,6 @@
 
 ## neovim
 
-* nvim setting No.4
 * nvim setting : dumpify
 
 
@@ -23,3 +22,4 @@
 * [shell] starship setting (osx, linux)
 * [posting] nvim copilot setting
 * [neovim] powershell lsp setting
+* [neovim] nvim setting No.4

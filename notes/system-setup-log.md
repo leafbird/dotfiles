@@ -26,6 +26,9 @@ winget install `
   kakao.kakaotalk `
   AutoHotkey.AutoHotkey `
   BurntSushi.ripgrep.MSVC `
+  LuaLS.lua-language-server `
+  sharkdp.bat `
+  ajeetdsouza.zoxide `
 ```
 
 ## don't use winget

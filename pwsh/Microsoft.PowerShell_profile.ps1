@@ -33,6 +33,14 @@ function google() {
   Start-Process "https://www.google.com/search?q=$args"
 }
 
+# batdiff
+function batdiff() {
+  git diff --name-only --relative --diff-filter=d | ForEach-Object { bat --diff $_ }
+}
+
+# zoxide
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
 # git add, commit, push
 # args[0]: commit message
 # args[1]: branch name
