@@ -88,6 +88,9 @@ function gs() {
 }
 
 # fzf
+# $env:_PSFZF_FZF_DEFAULT_OPTS = '--height 40% --reverse --border --ansi --prompt "fzf> "'
+$env:_PSFZF_FZF_DEFAULT_OPTS = '--preview "bat --color=always --style=header,grid --line-range :500 {}"'
+
 $script:enableFzf = $false
 function Enable-Fzf {
     if ($script:enableFzf) {
