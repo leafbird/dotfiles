@@ -25,6 +25,7 @@ winget install `
   sxyazi.yazi `
   kakao.kakaotalk `
   AutoHotkey.AutoHotkey `
+  BurntSushi.ripgrep.MSVC `
 ```
 
 ## don't use winget
