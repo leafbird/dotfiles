@@ -29,9 +29,11 @@ winget install `
   LuaLS.lua-language-server `
   sharkdp.bat `
   ajeetdsouza.zoxide `
+  Fortinet.FortiClientVPN `
 ```
 
 ## don't use winget
 
 * visual studio 2022
 * visual studio code
+* Fortinet.FortiClientVPN - 버전이 낮아(7.0.1) web에서 직접 설치.
