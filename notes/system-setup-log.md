@@ -30,6 +30,7 @@ winget install `
   sharkdp.bat `
   ajeetdsouza.zoxide `
   Fortinet.FortiClientVPN `
+  sharkdp.fd `
 ```
 
 ## don't use winget
