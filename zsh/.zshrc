@@ -17,6 +17,8 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 export EDITOR='nvim'
+alias vi=nvim
+alias vim=nvim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
