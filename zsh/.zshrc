@@ -42,6 +42,9 @@ eval "$(starship init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
 
+# zoxide
+eval "$(zoxide init zsh)"
+
 # rc 파일을 열고, 적용
 alias rc='nvim ~/.zshrc'
 alias s='source ~/.zshrc'
