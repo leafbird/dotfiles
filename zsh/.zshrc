@@ -37,6 +37,7 @@ autoload -U compinit && compinit
 eval "$(starship init zsh)"
 
 # fzf setting
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
 
 # rc 파일을 열고, 적용
