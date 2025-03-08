@@ -31,6 +31,7 @@ winget install `
   ajeetdsouza.zoxide `
   Fortinet.FortiClientVPN `
   sharkdp.fd `
+  Microsoft.NuGet `
 ```
 
 ## don't use winget
