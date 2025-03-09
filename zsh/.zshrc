@@ -84,6 +84,24 @@ function myip() {
 # google
 alias google='{read -r arr; open "https://www.google.com/search?q=${arr}"} <<<'
 
+# web
+web() {
+  url="$*"
+
+  # "http://" 또는 "https://"가 없으면 "https://"를 추가
+  if [[ ! "$url" =~ ^(http://|https://) ]]; then
+    url="https://$url"
+  fi
+
+  # macOS와 Linux에서 적절한 명령 사용
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    open "$url"
+  else
+    xdg-open "$url" &>/dev/null
+  fi
+}
+
+
 # git add, commit, push
 # $1: commit message
 # $2: branch name
