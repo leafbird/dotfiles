@@ -33,6 +33,18 @@ function google() {
   Start-Process "https://www.google.com/search?q=$args"
 }
 
+# web
+function web() {
+  $url = $args -join " "
+
+  # "http://" 또는 "https://"가 없으면 "https://"를 추가
+  if (-not ($url -match "^(http://|https://)")) {
+    $url = "https://$url"
+  }
+
+  Start-Process $url
+}
+
 # batdiff
 function batdiff() {
   git diff --name-only --relative --diff-filter=d | ForEach-Object { bat --diff $_ }
