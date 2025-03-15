@@ -1,0 +1,27 @@
+# setup: run as admin
+# cmd /c mklink %USERPROFILE%\.ssh\config %USERPROFILE%\dotfiles\ssh\config-home
+
+# proxmox groups -------------------------
+Host proxmox
+	HostName 192.168.50.221
+	User florist
+
+Host ct-archlinux
+	HostName 192.168.50.45
+	User florist
+
+Host ct-ubuntu
+	HostName 192.168.50.11
+	User florist
+
+# nas -------------------------
+Host diskstation
+	HostName diskstation
+	Port 20
+	User leafbird
+
+# macOs -------------------------
+Host macmini
+	HostName 192.168.50.5
+	User florist
+
