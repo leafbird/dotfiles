@@ -23,6 +23,16 @@ Set-Alias -Name c -Value "cls"
 function l() { eza -lah }
 function lt() { eza -lT }
 
+function sshconfig()
+{
+  Get-Content $env:USERPROFILE\.ssh\config | 
+    Select-String -Raw "(?<=^Host\s).*" | 
+    ForEach-Object { $_ -replace "^Host\s+", "ssh " } | 
+    fzf | 
+    Invoke-Expression
+
+}
+
 # what is my ip
 function myip() {
   curl http://ipecho.net/plain
