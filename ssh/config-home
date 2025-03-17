@@ -25,3 +25,8 @@ Host macmini
 	HostName 192.168.50.5
 	User florist
 
+# raspberry pi -------------------
+Host pi2
+	HostName 192.168.50.18
+	User florist
+
