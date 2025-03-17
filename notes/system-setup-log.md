@@ -32,6 +32,7 @@ winget install `
   Fortinet.FortiClientVPN `
   sharkdp.fd `
   Microsoft.NuGet `
+  RaspberryPiFoundation.RaspberryPiImager `
 ```
 
 ## don't use winget
