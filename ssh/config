@@ -49,14 +49,16 @@ Host ST-Build10
 	User stardev
 
 # 리눅스 테스트 서버 -------------------------
-Host linux-game01
-	HostName 172.16.10.140
-	User stardev
-
 Host ST-BuildWatch
 	HostName 172.16.100.30
 	Port 23
 	User buildman
+
+# macOs 테스트 서버 -------------------------
+Host Pasta
+	HostName pasta.bside.com
+	User buildman
+
 
 # 윈도우 테스트 서버 -------------------------
 Host ST-QA-Public3
