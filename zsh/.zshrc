@@ -140,4 +140,9 @@ batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
+# eval when on linux.
+if [[ "$OSTYPE" != "darwin"* ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 fastfetch
