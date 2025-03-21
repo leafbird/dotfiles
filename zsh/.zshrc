@@ -49,11 +49,11 @@ eval "$(zoxide init zsh)"
 alias rc='nvim ~/.zshrc'
 alias s='source ~/.zshrc'
 
-# 디렉토리 이동
-function mc() {
-  mkdir -p $1
-  cd $1
-}
+# 디렉토리 이동 - midnight commander와 겹쳐서 주석처리.
+# function mc() {
+#   mkdir -p $1
+#   cd $1
+# }
 
 # alias 설정
 alias h='cd ~'
