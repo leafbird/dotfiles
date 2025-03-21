@@ -30,7 +30,10 @@ function sshconfig()
     ForEach-Object { $_ -replace "^Host\s+", "ssh " } | 
     fzf | 
     Invoke-Expression
+}
 
+function pathlist() {
+  $env:PATH -split ";"
 }
 
 # what is my ip
