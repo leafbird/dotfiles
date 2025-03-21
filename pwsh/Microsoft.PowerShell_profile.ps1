@@ -20,8 +20,8 @@ function mc() {
 
 function h() { cd $env:USERPROFILE }
 Set-Alias -Name c -Value "cls"
-function l() { eza -lah }
-function lt() { eza -lT }
+function l() { eza -lah --icons=always }
+function lt() { eza -lT --icons=always }
 
 function sshconfig()
 {
