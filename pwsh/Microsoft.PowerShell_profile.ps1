@@ -36,6 +36,27 @@ function pathlist() {
   $env:PATH -split ";"
 }
 
+# 현재 경로를 추가하고 싶다면: (pwd).Path | addpath
+function addpath {
+  param(
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+    [string]$newPath
+  )
+
+  $currentPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
+
+  if ($currentPath -notlike "*$newPath*") {
+      if ($currentPath.EndsWith(";")) {
+          $currentPath = $currentPath.Substring(0, $currentPath.Length - 1)
+      }
+      $updatedPath = "$currentPath;$newPath"
+      [System.Environment]::SetEnvironmentVariable("Path", $updatedPath, "User")
+      Write-Output "경로가 추가되었습니다: $newPath"
+  } else {
+      Write-Output "이미 존재하는 경로입니다."
+  }
+}
+
 # what is my ip
 function myip() {
   curl http://ipecho.net/plain
