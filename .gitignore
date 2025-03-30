@@ -1,3 +1,4 @@
 .DS_Store
 *.swp
 nvim/.config/nvim/lazy-lock.json
+starship/.config/btop/
