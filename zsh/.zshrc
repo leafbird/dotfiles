@@ -97,6 +97,11 @@ alias c='clear'
 alias l='eza -lah' # or 'ls -lah'
 alias lt='eza -lT'
 
+function sshconfig() {
+  local selection=$(grep -E "^Host\s+" ~/.ssh/config | sed -E 's/^Host /ssh /' | fzf)
+  [[ -n "$selection" ]] && eval "$selection"
+}
+
 function pathlist() {
 # alias로 만들면 $PATH가 미리 evaluate 되면서 alias 자체에 고정되어 버린다.
 # alias pathlist="echo '$PATH' | tr ':' '\n'"
