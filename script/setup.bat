@@ -9,7 +9,7 @@ set directory=%userprofile%\.ssh
 if not exist "%directory%" (
     mkdir "%directory%"
 )
-mklink %directory%\config %userprofile%\dotfiles\ssh\config
+mklink %directory%\config %userprofile%\dotfiles\ssh\config-office
 
 @echo create vimrc symbolic link
 mklink %userprofile%\_vimrc %userprofile%\dotfiles\vim\_vimrc
