@@ -23,6 +23,42 @@ Set-Alias -Name c -Value "cls"
 function l() { eza -lah --icons=always }
 function lt() { eza -lT --icons=always }
 
+function sshset()
+{
+  # change ssh config
+  param(
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+    [string]$fileType
+  )
+
+  # check if admin privilege
+  if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)) {
+    Write-Host "Run this script as Administrator."
+    return
+  }
+
+  switch ($fileType) {
+    "office" { $source = "$env:USERPROFILE\dotfiles\ssh\config-office" }
+    "home" { $source = "$env:USERPROFILE\dotfiles\ssh\config-home" }
+    default {
+      Write-Host "Invalid file type. Use 'office' or 'home'."
+      return
+    }
+  }
+
+  $target = "$env:USERPROFILE\.ssh\config"
+  if (Test-Path $target) {
+    Write-Host "Backing up existing config to $target.bak"
+    Copy-Item -Path $target -Destination "$target.bak" -Force
+  }
+
+  Write-Host "make link from $source to $target"
+  if (Test-Path $target) {
+    Remove-Item -Path $target -Force
+  }
+  New-Item -Path $target -ItemType SymbolicLink -Target $source
+}
+
 function sshconfig()
 {
   Get-Content $env:USERPROFILE\.ssh\config | 
