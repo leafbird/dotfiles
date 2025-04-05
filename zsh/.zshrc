@@ -113,8 +113,8 @@ function sshset() {
   esac
 
   # 심볼릭 링크 생성
-  echo "Creating symlink from $source"
-  if [[ -f $target ]]; then
+  echo "Creating symlink to: $source"
+  if [ -L $target ] || [ -f $target ]; then
     rm -f "$target"
   fi
   ln -s "$source" "$target"

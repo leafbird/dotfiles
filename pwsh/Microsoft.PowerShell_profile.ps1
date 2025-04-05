@@ -48,7 +48,6 @@ function sshset()
 
   $target = "$env:USERPROFILE\.ssh\config"
   if (Test-Path $target) {
-    Write-Host "Backing up existing config to $target.bak"
     Copy-Item -Path $target -Destination "$target.bak" -Force
   }
 
