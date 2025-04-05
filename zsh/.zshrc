@@ -97,6 +97,29 @@ alias c='clear'
 alias l='eza -lah' # or 'ls -lah'
 alias lt='eza -lT'
 
+function sshset() {
+  local fileType=$1
+  local source
+  local target="$HOME/.ssh/config"
+
+  # fileType 확인
+  case $fileType in
+    office)  source="$HOME/dotfiles/ssh/config-office" ;;
+    home)    source="$HOME/dotfiles/ssh/config-home" ;;
+    *)
+      echo "Invalid file type. Use 'office' or 'home'."
+      return 1
+      ;;
+  esac
+
+  # 심볼릭 링크 생성
+  echo "Creating symlink from $source"
+  if [[ -f $target ]]; then
+    rm -f "$target"
+  fi
+  ln -s "$source" "$target"
+}
+
 function sshconfig() {
   local selection=$(grep -E "^Host\s+" ~/.ssh/config | sed -E 's/^Host /ssh /' | fzf)
   [[ -n "$selection" ]] && eval "$selection"
