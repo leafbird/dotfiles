@@ -6,12 +6,12 @@ Host proxmox
 	HostName 192.168.50.221
 	User florist
 
-Host ct-archlinux
-	HostName 192.168.50.45
+Host ubuntu
+	HostName 192.168.50.67
 	User florist
 
-Host ct-ubuntu
-	HostName 192.168.50.11
+Host ct-adguard
+	HostName 192.168.50.144
 	User florist
 
 # nas -------------------------
