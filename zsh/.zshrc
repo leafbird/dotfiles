@@ -210,11 +210,6 @@ batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
-# eval when on linux.
-if [[ "$OSTYPE" != "darwin"* ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 # WSL: share ssh key
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
   # Configure ssh forwarding
