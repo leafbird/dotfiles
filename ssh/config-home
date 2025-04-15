@@ -14,6 +14,18 @@ Host ct-adguard
 	HostName 192.168.50.144
 	User florist
 
+Host k3s-control
+	HostName 192.168.50.25
+	User florist
+
+Host k3s-worker1
+	HostName 192.168.50.45
+	User florist
+
+Host k3s-worker2
+	HostName 192.168.50.167
+	User florist
+
 # nas -------------------------
 Host diskstation
 	HostName diskstation
