@@ -206,6 +206,12 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gl='git log --oneline --graph --all'
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias listen='sudo lsof -iTCP -sTCP:LISTEN -n -P'
+else
+  alias listen='netstat -tlnp'
+fi
+
 batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
