@@ -236,5 +236,8 @@ if [[ -n "$WSL_DISTRO_NAME" ]]; then
   fi
 fi
 
+# k8s
+export KUBECONFIG=$HOME/.kube/config
+
 
 fastfetch
