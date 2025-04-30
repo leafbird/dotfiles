@@ -42,3 +42,8 @@ Host pi2
 	HostName 192.168.50.18
 	User florist
 
+# linux -------------------
+Host desktop
+	HostName 192.168.50.9
+	User florist
+
