@@ -238,6 +238,12 @@ fi
 
 # k8s
 export KUBECONFIG=$HOME/.kube/config
+# kubectl이 설치된 경우에만 alias 설정.
+if command -v kubectl &> /dev/null; then
+  source <(kubectl completion zsh)
+  alias k='kubectl'
+  complete -o default -F __start_kubectl k
+fi
 
 
 fastfetch
