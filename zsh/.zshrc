@@ -245,5 +245,9 @@ if command -v kubectl &> /dev/null; then
   complete -o default -F __start_kubectl k
 fi
 
+# Generated for envman. Do not edit.
+if [ -d "$HOME/.config/envman" ] && [ -s "$HOME/.config/envman/load.sh" ]; then
+  source "$HOME/.config/envman/load.sh"
+fi
 
 fastfetch
