@@ -47,3 +47,7 @@ Host desktop
 	HostName 192.168.50.9
 	User florist
 
+Host vm-casaos
+	HostName 192.168.50.56
+	User florist
+
