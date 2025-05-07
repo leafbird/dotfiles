@@ -108,11 +108,3 @@ Host k8s-worker04
 	HostName 172.16.11.64
 	User stardev
 
-Host k8s-worker05
-	HostName 172.16.11.65
-	User stardev
-
-Host k8s-worker06
-	HostName 172.16.11.66
-	User stardev
-
