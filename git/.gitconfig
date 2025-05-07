@@ -34,3 +34,5 @@
 	directory = C:/Users/PC/dotfiles
 	directory = D:/Dev/md
 	directory = C:/Users/kjcks/dotfiles
+[credential]
+	helper = store
