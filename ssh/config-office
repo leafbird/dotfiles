@@ -78,3 +78,41 @@ Host ST-QA-Public4
 Host dev-server01
 	HostName ST-DEV-SERVER01.bside.com
 	User administrator
+
+# k8s cluster -------------------------
+Host k8s-master01
+	HostName 172.16.11.51
+	User stardev
+
+Host k8s-master02
+	HostName 172.16.11.52
+	User stardev
+
+Host k8s-master03
+	HostName 172.16.11.53
+	User stardev
+
+Host k8s-worker01
+	HostName 172.16.11.61
+	User stardev
+
+Host k8s-worker02
+	HostName 172.16.11.62
+	User stardev
+
+Host k8s-worker03
+	HostName 172.16.11.63
+	User stardev
+
+Host k8s-worker04
+	HostName 172.16.11.64
+	User stardev
+
+Host k8s-worker05
+	HostName 172.16.11.65
+	User stardev
+
+Host k8s-worker06
+	HostName 172.16.11.66
+	User stardev
+
