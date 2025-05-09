@@ -216,6 +216,10 @@ batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
+listvms() {
+  sh ~/dotfiles/pve/list_vms.sh
+}
+
 # WSL: share ssh key
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
   # Configure ssh forwarding
