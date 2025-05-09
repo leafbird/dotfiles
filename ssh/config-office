@@ -75,7 +75,7 @@ Host ST-QA-Public3
 Host ST-QA-Public4
 	HostName 172.16.100.32
 	Port 23
-	User buildman
+	User florist
 
 
 # 사내 서비스용 서버 -------------------------
