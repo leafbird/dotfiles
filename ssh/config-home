@@ -21,9 +21,10 @@ Host pbs
 
 # nas -------------------------
 Host diskstation
-	HostName diskstation
+	HostName 192.168.50.132
 	Port 20
 	User leafbird
+  SetEnv TERM=xterm-256color
 
 # macOs -------------------------
 Host macmini
