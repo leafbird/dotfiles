@@ -6,25 +6,18 @@ Host proxmox
 	HostName 192.168.50.221
 	User florist
 
-Host ubuntu
-	HostName 192.168.50.67
-	User florist
-
 Host ct-adguard
 	HostName 192.168.50.144
 	User florist
 
-Host k3s-control
-	HostName 192.168.50.25
+Host casaos
+	HostName 192.168.50.21
 	User florist
 
-Host k3s-worker1
-	HostName 192.168.50.45
-	User florist
+Host pbs
+	HostName 192.168.50.22
+	User root
 
-Host k3s-worker2
-	HostName 192.168.50.167
-	User florist
 
 # nas -------------------------
 Host diskstation
@@ -43,11 +36,11 @@ Host pi2
 	User florist
 
 # linux -------------------
-Host desktop
+Host leafbird
 	HostName 192.168.50.9
 	User florist
 
 Host vm-casaos
-	HostName 192.168.50.56
+	HostName 192.168.50.15
 	User florist
 
