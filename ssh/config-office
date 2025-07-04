@@ -57,6 +57,7 @@ Host ST-BuildWatch
 # macOs 테스트 서버 -------------------------
 Host Pasta
 	HostName pasta.bside.com
+	Port 23
 	User buildman
 
 Host Puppy
