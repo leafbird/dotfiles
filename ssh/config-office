@@ -113,3 +113,8 @@ Host k8s-worker04
 	HostName 172.16.11.64
 	User stardev
 
+# k8s live cluster -------------------------
+Host k8s-live-master01
+	HostName 10.251.20.41
+	User stardev
+
