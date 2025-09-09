@@ -35,4 +35,5 @@
 	directory = D:/Dev/md
 	directory = C:/Users/kjcks/dotfiles
 [credential]
+	allowInsecureRepositories = true
 	helper = store
