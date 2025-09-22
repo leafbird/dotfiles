@@ -1,3 +1,6 @@
+# uncomment when using colima
+# Include /Users/florist/.colima/ssh_config
+
 # setup: run as admin
 # cmd /c mklink %USERPROFILE%\.ssh\config %USERPROFILE%\dotfiles\ssh\config-home
 
