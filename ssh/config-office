@@ -54,6 +54,11 @@ Host ST-BuildWatch
 	Port 23
 	User buildman
 
+Host STAR-BUILDWATCH
+	HostName 172.16.11.30
+	Port 22
+	User stardev
+
 # macOs 테스트 서버 -------------------------
 Host Pasta
 	HostName pasta.bside.com
