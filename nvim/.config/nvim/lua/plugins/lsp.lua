@@ -18,8 +18,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require('lspconfig')
-      lspconfig.lua_ls.setup({})
+      -- local lspconfig = require('lspconfig')
+      -- vim.lsp.config('lua_ls').setup({})
 
       keyMapper('K', vim.lsp.buf.hover)
       keyMapper('gd', vim.lsp.buf.definition) -- goto definition
