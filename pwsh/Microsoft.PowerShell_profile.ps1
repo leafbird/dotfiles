@@ -92,6 +92,25 @@ function addpath {
   }
 }
 
+function deletepath {
+  param(
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+    [string]$delPath
+  )
+
+  $currentPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
+  $pathEntries = $currentPath -split ";"
+
+  if ($pathEntries -contains $delPath) {
+      $updatedEntries = $pathEntries | Where-Object { $_ -ne $delPath }
+      $updatedPath = ($updatedEntries -join ";").TrimEnd(";")
+      [System.Environment]::SetEnvironmentVariable("Path", $updatedPath, "User")
+      Write-Output "경로 삭제. 터미널을 재시작하세요. delPath: $delPath"
+  } else {
+      Write-Output "존재하지 않는 경로입니다."
+  }
+}
+
 # what is my ip
 function myip() {
   curl http://ipecho.net/plain
