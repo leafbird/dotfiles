@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "jira-4xngp0-87": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.composio.dev/partner/composio/jira/mcp?customerId=ab531fa5-51c1-4bf4-9b68-c4c23498f892&agent=claude"
+      ],
+      "env": {
+        "npm_config_yes": "true"
+      }
+    },
+    "Confluence-tatvz3": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://apollo.composio.dev/v3/mcp/33c5530f-35f8-4c04-aa2d-70a3ef9d1769/mcp?include_composio_helper_actions=true"
+      ],
+      "env": {
+        "npm_config_yes": "true"
+      }
+    }
+  }
+}
