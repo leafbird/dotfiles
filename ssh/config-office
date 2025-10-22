@@ -35,6 +35,18 @@ Host ClientBuild10
 	HostName ST-ClientBuild10.bside.com
 	User buildman
 
+Host ClientBuild11
+	HostName 172.16.11.31
+	User buildman
+
+Host ClientBuild12
+	HostName 172.16.11.32
+	User buildman
+
+Host ClientBuild13
+	HostName 172.16.11.33
+	User buildman
+
 # 서버 빌드머신 -------------------------
 Host ST-Build08
 	HostName 172.16.10.188
