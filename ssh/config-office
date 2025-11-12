@@ -91,10 +91,19 @@ Host ST-QA-Public3
 
 # proxmox -------------------------
 Host ST-QA-Public4
-	HostName 172.16.100.32
+	HostName 172.16.100.31
 	Port 23
 	User florist
 
+Host k3s-master01
+	HostName 172.16.100.32
+	Port 23
+	User buildman
+
+Host k3s-worker01
+	HostName 172.16.100.33
+	Port 23
+	User buildman
 
 # 사내 서비스용 서버 -------------------------
 Host dev-server01
