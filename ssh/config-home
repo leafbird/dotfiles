@@ -21,6 +21,10 @@ Host pbs
 	HostName 192.168.50.22
 	User root
 
+# aoostar groups -------------------------
+Host aoostar
+	HostName 192.168.50.30
+	User root
 
 # nas -------------------------
 Host diskstation
