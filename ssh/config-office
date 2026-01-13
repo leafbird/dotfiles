@@ -60,6 +60,10 @@ Host ST-Build10
 	HostName 172.16.10.190
 	User stardev
 
+Host ST-Build11
+	HostName 172.16.10.187
+	User stardev
+
 # 리눅스 테스트 서버 -------------------------
 Host ST-BuildWatch
 	HostName 172.16.100.30
