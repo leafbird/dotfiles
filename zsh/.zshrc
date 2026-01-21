@@ -261,4 +261,8 @@ if [ -d "$HOME/.nvm" ]; then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+# claude code
+export PATH="$HOME/.local/bin:$PATH"
+
 fastfetch
+
