@@ -75,17 +75,10 @@ Host STAR-BUILDWATCH
 	Port 22
 	User stardev
 
-# macOs 테스트 서버 -------------------------
-Host Pasta
-	HostName pasta.bside.com
-	Port 23
-	User buildman
-
-Host Puppy
-	HostName 172.16.101.26
-	Port 23
-	User buildman
-
+Host dev-st-grafana
+	HostName dev-st-grafana.bside.com
+	Port 22
+	User root
 
 # 윈도우 테스트 서버 -------------------------
 Host ST-QA-Public3
