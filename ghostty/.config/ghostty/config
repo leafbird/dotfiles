@@ -1,3 +1,4 @@
 font-family = Hack Nerd Font
 theme = Gruvbox Dark
 font-size = 16
+keybind = shift+enter=text:\x1b\r
