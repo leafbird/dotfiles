@@ -52,3 +52,7 @@ Host leafbird
 	HostName 192.168.50.9
 	User florist
 
+
+Host ragflow
+	HostName 192.168.50.33
+	User florist
