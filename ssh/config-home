@@ -5,8 +5,8 @@
 # cmd /c mklink %USERPROFILE%\.ssh\config %USERPROFILE%\dotfiles\ssh\config-home
 
 # proxmox groups -------------------------
-Host proxmox
-	HostName 192.168.50.221
+Host n150
+	HostName 192.168.50.20
 	User root
 
 Host ct-adguard
