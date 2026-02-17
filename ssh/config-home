@@ -7,7 +7,7 @@
 # proxmox groups -------------------------
 Host proxmox
 	HostName 192.168.50.221
-	User florist
+	User root
 
 Host ct-adguard
 	HostName 192.168.50.144
