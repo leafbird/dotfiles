@@ -265,3 +265,6 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 
 fastfetch
+
+# 머신별 로컬 설정 (git에 안 올라감)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
