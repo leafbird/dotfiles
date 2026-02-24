@@ -272,4 +272,8 @@ fi
 # 머신별 로컬 설정 (git에 안 올라감)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-fastfetch
+if [[ -f ~/ff.jsonc ]]; then
+  fastfetch -c ~/ff.jsonc
+else
+  fastfetch
+fi
