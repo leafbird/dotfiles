@@ -78,6 +78,11 @@ if exist "%userprofile%\.claude\statusline-command.sh" (
 ) else (
     mklink "%userprofile%\.claude\statusline-command.sh" "%DOTFILES%\claude\.claude\statusline-command.sh" && echo [ OK ] claude statusline-command.sh || echo [FAIL] claude statusline-command.sh
 )
+if exist "%userprofile%\.claude\CLAUDE.md" (
+    echo [SKIP] claude CLAUDE.md already exists
+) else (
+    mklink "%userprofile%\.claude\CLAUDE.md" "%DOTFILES%\claude\.claude\CLAUDE.md" && echo [ OK ] claude CLAUDE.md || echo [FAIL] claude CLAUDE.md
+)
 
 echo.
 echo Done.
