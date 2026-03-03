@@ -1,7 +1,11 @@
 {
-  "skipDangerousModePermissionPrompt": true,
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
-  }
+  },
+  "enabledPlugins": {
+    "atlassian@claude-plugins-official": true,
+    "context-mode@claude-context-mode": true
+  },
+  "skipDangerousModePermissionPrompt": true
 }
