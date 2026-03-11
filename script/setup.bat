@@ -83,6 +83,12 @@ if exist "%userprofile%\.claude\CLAUDE.md" (
 ) else (
     mklink "%userprofile%\.claude\CLAUDE.md" "%DOTFILES%\claude\.claude\CLAUDE.md" && echo [ OK ] claude CLAUDE.md || echo [FAIL] claude CLAUDE.md
 )
+if not exist "%userprofile%\.claude\skills" mkdir "%userprofile%\.claude\skills"
+if exist "%userprofile%\.claude\skills\confluence" (
+    echo [SKIP] claude skills/confluence already exists
+) else (
+    mklink /d "%userprofile%\.claude\skills\confluence" "%DOTFILES%\claude\.claude\skills\confluence" && echo [ OK ] claude skills/confluence || echo [FAIL] claude skills/confluence
+)
 
 echo.
 echo Done.
