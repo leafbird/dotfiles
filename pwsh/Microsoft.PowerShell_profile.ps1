@@ -135,7 +135,7 @@ function web() {
 
 # batdiff
 function batdiff() {
-  git diff --name-only --relative --diff-filter=d | ForEach-Object { bat --diff $_ }
+  git diff --color=always @args | bat --plain --paging=never
 }
 
 # zoxide
