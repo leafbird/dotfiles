@@ -21,7 +21,7 @@ stow 패키지는 홈 디렉토리 기준의 경로를 그대로 유지한다.
 | `nvim` | `~/.config/nvim/` | Neovim (lazy.nvim, 16+ 플러그인, Lua 기반) |
 | `ghostty` | `~/.config/ghostty/` | Ghostty 터미널 (Gruvbox Dark, Hack Nerd Font) |
 | `kitty` | `~/.config/kitty/` | Kitty 터미널 |
-| `claude` | `~/.claude/` | Claude Code CLI (settings, statusline, CLAUDE.md) |
+| `claude` | `~/.claude/` | Claude Code CLI (settings, statusline, CLAUDE.md, skills) |
 | `gemini` | `~/.gemini/` | Gemini CLI |
 | `hyprland` | `~/.config/hypr/` | Hyprland WM + hyprlock (Linux) |
 | `waybar` | `~/.config/waybar/` | Waybar 상태바 (Linux) |
@@ -37,6 +37,7 @@ stow 패키지는 홈 디렉토리 기준의 경로를 그대로 유지한다.
 | `wsl/` | `.wslconfig` |
 | `visual studio/` | VS/SSMS 설정, 코딩 스타일 ruleset |
 | `pve/` | Proxmox VE VM 목록 스크립트 |
+| `screenshots/` | 터미널/에디터 스크린샷 |
 | `notes/` | 시스템 세팅 가이드, todo |
 
 ## 규칙

@@ -263,6 +263,7 @@ fi
 
 # claude code
 export PATH="$HOME/.local/bin:$PATH"
+alias cc='claude --dangerously-skip-permissions'
 
 # OpenClaw Completion
 if command -v openclaw &> /dev/null; then
