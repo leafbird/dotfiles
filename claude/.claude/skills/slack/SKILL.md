@@ -178,4 +178,4 @@ resp = json.loads(urllib.request.urlopen(req).read())
 - User ID를 channel에 넣으면 해당 사용자에게 DM 전송됨
 - API 응답 `ok: false`이면 스크립트가 stderr에 에러를 출력하고 exit 1
 - Rate limit 에러 시 잠시 후 재시도
-- `PYTHONIOENCODING=utf-8` 환경변수 필요 (Windows cp949 인코딩 에러 방지)
+- `slack_api.py`에 UTF-8 인코딩 처리가 내장되어 있으므로 `PYTHONIOENCODING` 불필요. 인라인 스크립트 작성 시에는 `python3 -X utf8 -c "..."` + `sys.stdout.reconfigure(encoding='utf-8')` 적용 필요.

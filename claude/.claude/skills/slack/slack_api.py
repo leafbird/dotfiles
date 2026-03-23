@@ -23,6 +23,9 @@ import sys
 import urllib.request
 import urllib.parse
 
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
+
 
 def load_credentials():
     cred_path = os.path.join(os.path.expanduser("~"), ".claude", "credentials.json")
