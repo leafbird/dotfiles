@@ -135,7 +135,7 @@ function web() {
 
 # batdiff
 function batdiff() {
-  git diff --color=always @args | bat --plain --paging=never
+  git diff --name-only --relative --diff-filter=d @args | ForEach-Object { bat --diff $_ }
 }
 
 # claude code
