@@ -138,6 +138,9 @@ function batdiff() {
   git diff --color=always @args | bat --plain --paging=never
 }
 
+# claude code
+function cc() { claude --dangerously-skip-permissions @args }
+
 # zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
