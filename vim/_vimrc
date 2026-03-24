@@ -95,6 +95,4 @@ endif
 " buffer space on cursor's upside.
 set scrolloff=3
 
-" ignore auto newline
-set nowrap
-set textwidth=0
+set wrap  " 긴 줄을 화면에서 자동으로 접어서 보여줌

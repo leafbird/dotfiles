@@ -1,5 +1,6 @@
 ﻿set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
+autocmd FileType * set textwidth=0  " vimrc_example.vim이 autocmd로 textwidth=78을 설정하여 타이핑 중 자동 줄바꿈이 발생함. autocmd로 덮어써야 함.
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
