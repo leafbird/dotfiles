@@ -15,6 +15,12 @@
         "source": "github",
         "repo": "jarrodwatts/claude-hud"
       }
+    },
+    "context-mode": {
+      "source": {
+        "source": "github",
+        "repo": "mksglu/context-mode"
+      }
     }
   },
   "skipDangerousModePermissionPrompt": true
