@@ -3,3 +3,4 @@
 nvim/.config/github-copilot/
 nvim/.config/nvim/lazy-lock.json
 starship/.config/btop/
+claude/.claude/plugins/*/
