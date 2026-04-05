@@ -7,7 +7,8 @@
     "atlassian@claude-plugins-official": true,
     "context-mode@claude-context-mode": true,
     "claude-hud@claude-hud": true,
-    "superpowers@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "frontend-design@claude-code-plugins": true
   },
   "extraKnownMarketplaces": {
     "claude-hud": {
@@ -20,6 +21,12 @@
       "source": {
         "source": "github",
         "repo": "mksglu/context-mode"
+      }
+    },
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
       }
     }
   },
