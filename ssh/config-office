@@ -8,50 +8,62 @@ Host github.com
 Host ClientBuild01
 	HostName ST-ClientBuild01.bside.com
 	User buildman
+	Port 2222
 
 Host ClientBuild02
 	HostName ST-ClientBuild02.bside.com
 	User buildman
+	Port 2222
 
 Host ClientBuild03
 	HostName ST-ClientBuild03.bside.com
 	User buildman
+	Port 2222
 
 Host ClientBuild04
 	HostName ST-ClientBuild04.bside.com
 	User buildman
+	Port 2222
 
 Host ClientBuild05
 	HostName ST-ClientBuild05.bside.com
 	User buildman
+	Port 2222
 
 Host ClientBuild07
 	HostName ST-ClientBuild07.bside.com
 	User buildman
+	Port 2222
 
 Host ClientBuild08
 	HostName ST-ClientBuild08.bside.com
 	User buildman
+	Port 2222
 
 Host ClientBuild09
 	HostName ST-ClientBuild09.bside.com
 	User buildman
+	Port 2222
 
 Host ClientBuild10
 	HostName ST-ClientBuild10.bside.com
 	User buildman
+	Port 2222
 
 Host ClientBuild11
 	HostName 172.16.11.31
 	User buildman
+	Port 2222
 
 Host ClientBuild12
 	HostName 172.16.11.32
 	User buildman
+	Port 2222
 
 Host ClientBuild13
 	HostName 172.16.11.33
 	User buildman
+	Port 2222
 
 # 서버 빌드머신 -------------------------
 Host ST-Build08
@@ -147,3 +159,9 @@ Host k8s-live-master01
 	HostName 10.251.20.41
 	User stardev
 
+
+# GitHub SSH over 443
+Host github.com
+	HostName ssh.github.com
+	Port 443
+	User git
