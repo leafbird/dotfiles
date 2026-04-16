@@ -6,6 +6,10 @@
     "showTodos": true,
     "showDuration": true,
     "showConfigCounts": true,
-    "showSessionName": true
+    "showSessionName": true,
+    "showUsage": true,
+    "showTokenBreakdown": true,
+    "showSpeed": true,
+    "usageBarEnabled": true
   }
 }
