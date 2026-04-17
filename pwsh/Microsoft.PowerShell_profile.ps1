@@ -144,6 +144,11 @@ function cc() { claude --dangerously-skip-permissions @args }
 # zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
+# fnm (Fast Node Manager) - auto-switch Node per .nvmrc on cd
+if (Get-Command fnm -ErrorAction SilentlyContinue) {
+  fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
+}
+
 # git add, commit, push
 # args[0]: commit message
 # args[1]: branch name
