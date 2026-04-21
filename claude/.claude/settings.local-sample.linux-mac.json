@@ -1,7 +1,0 @@
-{
-  "enabledPlugins": {
-    "atlassian@claude-plugins-official": true,
-    "context-mode@claude-context-mode": true,
-    "claude-hud@claude-hud": true
-  }
-}
