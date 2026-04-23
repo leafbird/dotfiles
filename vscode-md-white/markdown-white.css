@@ -1,0 +1,242 @@
+:root {
+  --md-bg: #ffffff;
+  --md-canvas-subtle: #f6f8fa;
+  --md-text: #24292f;
+  --md-muted: #57606a;
+  --md-heading: #1f2328;
+  --md-link: #0969da;
+  --md-link-hover: #0550ae;
+  --md-border: #d0d7de;
+  --md-border-strong: #afb8c1;
+  --md-quote-border: #d0d7de;
+  --md-code-bg: rgba(175, 184, 193, 0.2);
+  --md-code-text: #cf222e;
+  --md-pre-bg: #f6f8fa;
+  --md-table-header-bg: #f6f8fa;
+  --md-selection: #cce5ff;
+}
+
+body {
+  background: var(--md-bg) !important;
+  color: var(--md-text) !important;
+  font-family: "Pretendard Variable", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--md-heading) !important;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+h1,
+h2 {
+  border-bottom: 1px solid var(--md-border);
+  padding-bottom: 0.3em;
+}
+
+p,
+li,
+td,
+th,
+blockquote {
+  color: var(--md-text);
+}
+
+small,
+.muted,
+figcaption {
+  color: var(--md-muted);
+}
+
+a {
+  color: var(--md-link) !important;
+  text-decoration-color: color-mix(in srgb, var(--md-link), white 42%);
+}
+
+a:hover {
+  color: var(--md-link-hover) !important;
+}
+
+code {
+  background: var(--md-code-bg);
+  color: var(--md-code-text);
+  border-radius: 6px;
+  font-family: "Pretendard Variable", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.92em;
+  padding: 0.1em 0.35em;
+}
+
+pre {
+  background: var(--md-pre-bg) !important;
+  border: 1px solid var(--md-border);
+  border-radius: 6px;
+  padding: 0.95em 1.05em;
+}
+
+pre code {
+  background: transparent;
+  border: 0;
+  color: var(--md-text);
+  font-family: "Pretendard Variable", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.92em;
+  padding: 0;
+}
+
+blockquote {
+  background: var(--md-canvas-subtle);
+  border-left: 4px solid var(--md-quote-border);
+  margin: 1em 0;
+  padding: 0.65em 1em;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table th,
+table td {
+  border: 1px solid var(--md-border);
+  padding: 0.45em 0.7em;
+}
+
+table th {
+  background: var(--md-table-header-bg);
+  color: var(--md-heading);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--md-border);
+}
+
+mark {
+  background: #fff8c5;
+  color: #3d2f00;
+}
+
+::selection {
+  background: var(--md-selection);
+}
+
+ul li::marker,
+ol li::marker {
+  color: var(--md-muted);
+}
+
+img {
+  border-radius: 6px;
+  border: 1px solid var(--md-border);
+}
+
+/* ── Mermaid ────────────────────────────────── */
+.mermaid,
+.mermaid svg {
+  background: transparent !important;
+}
+
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon,
+.mermaid .node path {
+  fill: var(--md-canvas-subtle) !important;
+  stroke: var(--md-border-strong) !important;
+}
+
+.mermaid .node .label,
+.mermaid .nodeLabel {
+  color: var(--md-text) !important;
+}
+
+.mermaid .edgePath .path,
+.mermaid .flowchart-link {
+  stroke: var(--md-muted) !important;
+}
+
+.mermaid marker path {
+  fill: var(--md-muted) !important;
+  stroke: var(--md-muted) !important;
+}
+
+.mermaid .edgeLabel {
+  background: var(--md-bg) !important;
+  color: var(--md-text) !important;
+}
+
+.mermaid .edgeLabel rect {
+  fill: var(--md-bg) !important;
+  opacity: 0.85 !important;
+}
+
+.mermaid .cluster rect {
+  fill: var(--md-canvas-subtle) !important;
+  stroke: var(--md-border) !important;
+}
+
+.mermaid .cluster span,
+.mermaid .cluster p {
+  color: var(--md-muted) !important;
+}
+
+.mermaid .actor {
+  fill: var(--md-canvas-subtle) !important;
+  stroke: var(--md-border-strong) !important;
+}
+
+.mermaid text.actor > tspan {
+  fill: var(--md-text) !important;
+}
+
+.mermaid .messageLine0,
+.mermaid .messageLine1 {
+  stroke: var(--md-muted) !important;
+}
+
+.mermaid .note rect {
+  fill: #fff8c5 !important;
+  stroke: #d4a72c !important;
+}
+
+.mermaid .noteText > tspan {
+  fill: #3d2f00 !important;
+}
+
+.mermaid .loopText,
+.mermaid .loopText > tspan {
+  fill: var(--md-text) !important;
+  stroke: none !important;
+}
+
+.mermaid .labelBox {
+  fill: var(--md-canvas-subtle) !important;
+  stroke: var(--md-border) !important;
+}
+
+.mermaid .labelText,
+.mermaid .labelText > tspan {
+  fill: var(--md-text) !important;
+}
+
+.mermaid .sequenceNumber {
+  fill: var(--md-bg) !important;
+}
+
+.mermaid .grid .tick line {
+  stroke: var(--md-border) !important;
+}
+
+.mermaid .grid path {
+  stroke-width: 0 !important;
+}
+
+.mermaid svg text {
+  fill: var(--md-text) !important;
+}
