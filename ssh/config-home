@@ -1,3 +1,5 @@
+Include /Users/florist/.colima/ssh_config
+
 # uncomment when using colima
 # Include /Users/florist/.colima/ssh_config
 
@@ -39,8 +41,12 @@ Host diskstation
 
 # macOs -------------------------
 Host macmini
-	HostName 192.168.50.5
+	HostName 192.168.50.53
 	User florist
+
+Host imac
+	HostName 192.168.50.55
+	User leafbird
 
 # raspberry pi -------------------
 Host pi2
