@@ -254,11 +254,16 @@ if [ -d "$HOME/.config/envman" ] && [ -s "$HOME/.config/envman/load.sh" ]; then
   source "$HOME/.config/envman/load.sh"
 fi
 
-# nvm - node version manage
+# nvm - node version manager
 if [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+elif [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ ! -d "$NVM_DIR" ] && mkdir "$NVM_DIR"
+  \. "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 fi
 
 # claude code
