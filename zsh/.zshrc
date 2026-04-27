@@ -273,7 +273,7 @@ alias cdx='codex --dangerously-bypass-approvals-and-sandbox'
 
 # OpenClaw Completion
 if command -v openclaw &> /dev/null; then
-  source "/home/buildman/.openclaw/completions/openclaw.zsh"
+  [[ -f "$HOME/.openclaw/completions/openclaw.zsh" ]] && source "$HOME/.openclaw/completions/openclaw.zsh"
 fi
 
 # 머신별 로컬 설정 (git에 안 올라감)
