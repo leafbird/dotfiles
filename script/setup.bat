@@ -1,8 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
-pushd "%~dp0"
+pushd "%~dp0\.."
 
-set DOTFILES=%userprofile%\dotfiles
+set "DOTFILES=%CD%"
 
 :: ------- gitconfig -------
 if exist "%userprofile%\.gitconfig" (
@@ -67,27 +67,39 @@ if exist "%userprofile%\.wslconfig" (
 )
 
 :: ------- claude -------
+set "CLAUDE_ROOT=%DOTFILES%\claude\.claude"
+set "CLAUDE_MD_SOURCE=%CLAUDE_ROOT%\CLAUDE.md"
+if not exist "%CLAUDE_MD_SOURCE%" set "CLAUDE_MD_SOURCE=%DOTFILES%\claude-shared\CLAUDE.md"
+
 if not exist "%userprofile%\.claude" mkdir "%userprofile%\.claude"
 if exist "%userprofile%\.claude\settings.json" (
     echo [SKIP] claude settings.json already exists
+) else if not exist "%CLAUDE_ROOT%\settings.json" (
+    echo [SKIP] claude settings.json source missing
 ) else (
-    mklink "%userprofile%\.claude\settings.json" "%DOTFILES%\claude\.claude\settings.json" && echo [ OK ] claude settings.json || echo [FAIL] claude settings.json
+    mklink "%userprofile%\.claude\settings.json" "%CLAUDE_ROOT%\settings.json" && echo [ OK ] claude settings.json || echo [FAIL] claude settings.json
 )
 if exist "%userprofile%\.claude\statusline-command.sh" (
     echo [SKIP] claude statusline-command.sh already exists
+) else if not exist "%CLAUDE_ROOT%\statusline-command.sh" (
+    echo [SKIP] claude statusline-command.sh source missing
 ) else (
-    mklink "%userprofile%\.claude\statusline-command.sh" "%DOTFILES%\claude\.claude\statusline-command.sh" && echo [ OK ] claude statusline-command.sh || echo [FAIL] claude statusline-command.sh
+    mklink "%userprofile%\.claude\statusline-command.sh" "%CLAUDE_ROOT%\statusline-command.sh" && echo [ OK ] claude statusline-command.sh || echo [FAIL] claude statusline-command.sh
 )
 if exist "%userprofile%\.claude\CLAUDE.md" (
     echo [SKIP] claude CLAUDE.md already exists
+) else if not exist "%CLAUDE_MD_SOURCE%" (
+    echo [SKIP] claude CLAUDE.md source missing
 ) else (
-    mklink "%userprofile%\.claude\CLAUDE.md" "%DOTFILES%\claude\.claude\CLAUDE.md" && echo [ OK ] claude CLAUDE.md || echo [FAIL] claude CLAUDE.md
+    mklink "%userprofile%\.claude\CLAUDE.md" "%CLAUDE_MD_SOURCE%" && echo [ OK ] claude CLAUDE.md || echo [FAIL] claude CLAUDE.md
 )
 if not exist "%userprofile%\.claude\skills" mkdir "%userprofile%\.claude\skills"
 if exist "%userprofile%\.claude\skills\confluence" (
     echo [SKIP] claude skills/confluence already exists
+) else if not exist "%CLAUDE_ROOT%\skills\confluence" (
+    echo [SKIP] claude skills/confluence source missing
 ) else (
-    mklink /d "%userprofile%\.claude\skills\confluence" "%DOTFILES%\claude\.claude\skills\confluence" && echo [ OK ] claude skills/confluence || echo [FAIL] claude skills/confluence
+    mklink /d "%userprofile%\.claude\skills\confluence" "%CLAUDE_ROOT%\skills\confluence" && echo [ OK ] claude skills/confluence || echo [FAIL] claude skills/confluence
 )
 
 echo.

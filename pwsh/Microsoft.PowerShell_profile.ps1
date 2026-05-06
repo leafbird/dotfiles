@@ -1,8 +1,10 @@
 # oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-Expression
 
 # starship
-$ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
-Invoke-Expression (&starship init powershell)
+if (Get-Command starship -ErrorAction SilentlyContinue) {
+  $ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
+  Invoke-Expression (&starship init powershell)
+}
 
 # alias
 Set-Alias -Name vi -Value nvim
@@ -138,11 +140,41 @@ function batdiff() {
   git diff --name-only --relative --diff-filter=d @args | ForEach-Object { bat --diff $_ }
 }
 
+function Use-VcVars() {
+  $vswhere = Join-Path ${env:ProgramFiles(x86)} "Microsoft Visual Studio\Installer\vswhere.exe"
+  if (-not (Test-Path $vswhere)) {
+    Write-Error "vswhere.exe를 찾을 수 없습니다."
+    return
+  }
+
+  $vsPath = & $vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+  if (-not $vsPath) {
+    Write-Error "Visual Studio C++ 빌드 도구를 찾을 수 없습니다."
+    return
+  }
+
+  $vcvars = Join-Path $vsPath "VC\Auxiliary\Build\vcvars64.bat"
+  if (-not (Test-Path $vcvars)) {
+    Write-Error "vcvars64.bat을 찾을 수 없습니다: $vcvars"
+    return
+  }
+
+  cmd /c "`"$vcvars`" >nul && set" | ForEach-Object {
+    if ($_ -match "^(.*?)=(.*)$") {
+      Set-Item -Path "Env:$($matches[1])" -Value $matches[2]
+    }
+  }
+
+  Write-Host "Visual Studio C++ x64 build environment loaded."
+}
+
 # claude code
 function cc() { claude --dangerously-skip-permissions @args }
 
 # zoxide
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+  Invoke-Expression (& { (zoxide init powershell | Out-String) })
+}
 
 # fnm (Fast Node Manager) - auto-switch Node per .nvmrc on cd
 if (Get-Command fnm -ErrorAction SilentlyContinue) {
@@ -240,7 +272,10 @@ if ($host.Name -eq 'ConsoleHost')
 {
     Import-Module PSReadLine
 
-	Set-PSReadLineOption -EditMode Windows
-	Set-PSReadLineOption -PredictionViewStyle ListView
-	Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+    Set-PSReadLineOption -EditMode Windows
+
+    if ([Environment]::UserInteractive -and -not [Console]::IsOutputRedirected) {
+        Set-PSReadLineOption -PredictionViewStyle ListView
+        Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+    }
 }
