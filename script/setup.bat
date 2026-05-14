@@ -102,6 +102,19 @@ if exist "%userprofile%\.claude\skills\confluence" (
     mklink /d "%userprofile%\.claude\skills\confluence" "%CLAUDE_ROOT%\skills\confluence" && echo [ OK ] claude skills/confluence || echo [FAIL] claude skills/confluence
 )
 
+:: ------- autohotkey: esc_force_english (vim) -------
+set "AHK_EXE=C:\Program Files\AutoHotkey\AutoHotkeyU64.exe"
+if not exist "%AHK_EXE%" set "AHK_EXE=C:\Program Files\AutoHotkey\AutoHotkey.exe"
+set "AHK_SCRIPT=%DOTFILES%\vim\esc_force_english.ahk"
+set "AHK_LNK=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\esc_force_english.lnk"
+if exist "%AHK_LNK%" (
+    echo [SKIP] esc_force_english startup shortcut already exists
+) else if not exist "%AHK_EXE%" (
+    echo [SKIP] AutoHotkey v1 not installed ^(winget install AutoHotkey.AutoHotkey --version 1.1.37.02^)
+) else (
+    powershell -NoProfile -Command "$w=New-Object -ComObject WScript.Shell; $s=$w.CreateShortcut('%AHK_LNK%'); $s.TargetPath='%AHK_EXE%'; $s.Arguments='\"%AHK_SCRIPT%\"'; $s.WorkingDirectory='%DOTFILES%\vim'; $s.Save()" && echo [ OK ] esc_force_english startup shortcut || echo [FAIL] esc_force_english startup shortcut
+)
+
 echo.
 echo Done.
 popd
