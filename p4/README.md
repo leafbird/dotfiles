@@ -18,13 +18,20 @@ Description:
 
 ### 설치
 
-1. P4V 메뉴: **Tools → Manage Custom Tools... → Import Custom Tools...**
-2. 이 폴더의 `customtools.xml` 선택.
-3. Submitted 탭/Submitted 패널에서 CL 우클릭하면 메뉴에 **슬랙 공유 포맷** 등장.
+1. `customtools.xml` 의 **Arguments 안 .ps1 절대경로** 를 현재 머신에 맞게 수정.
+   - 기본값은 `C:\Users\choisungki\dotfiles\p4\slack-share.ps1`.
+   - 사용자명이나 dotfiles 위치가 다르면 그에 맞춰 통째로 바꿔야 한다.
+   - ⚠ **`%USERPROFILE%` 같은 환경변수는 못 쓴다.** P4V 가 `%U` 를 자기 치환
+     토큰으로 오해해서 `%c` 와 충돌, "More than one replaceable file argument
+     of type %X is not allowed" 에러로 실행 거부됨. 반드시 절대경로.
+2. P4V 메뉴: **Tools → Manage Custom Tools... → Import Custom Tools...**
+3. 수정한 `customtools.xml` 선택.
+4. Submitted 탭/Submitted 패널에서 CL 우클릭하면 메뉴에 **슬랙 공유 포맷** 등장.
 
 > P4V 가 이미 다른 커스텀 툴을 갖고 있다면 import 가 기존 정의를
 > 덮어쓸 수 있으니, `%USERPROFILE%\.p4qt\customtools.xml` 을 백업한 뒤
-> 머지하는 편이 안전하다.
+> 머지하는 편이 안전하다. (이 경로 표기는 위 절대경로 규칙과 무관 —
+> Windows 탐색기/PowerShell 에서는 `%USERPROFILE%` 가 정상 해석된다.)
 
 ### 동작
 
