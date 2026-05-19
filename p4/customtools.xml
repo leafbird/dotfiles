@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  P4V Custom Tool: 슬랙 공유 포맷
+  ===============================
+  Submitted changelist 우클릭 → '슬랙 공유 포맷' 선택 시
+  해당 CL 의 Change/Date/User/Description 을 ``` 로 감싸 클립보드에 복사한다.
+
+  설치:
+    P4V → Tools → Manage Custom Tools... → Import Custom Tools...
+    이 파일(customtools.xml)을 지정하면 아래 항목이 추가된다.
+
+  또는 %USERPROFILE%\.p4qt\customtools.xml 에 직접 머지해도 된다.
+-->
+<CustomToolDefList varName="customtooldeflist">
+ <CustomToolDef>
+  <Definition>
+   <Name>슬랙 공유 포맷</Name>
+   <Command>powershell.exe</Command>
+   <Arguments>-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Users\choisungki\dotfiles\p4\slack-share.ps1 -Change %c</Arguments>
+   <Shortcut></Shortcut>
+  </Definition>
+  <Console>
+   <CloseOnExit>true</CloseOnExit>
+   <Show>false</Show>
+  </Console>
+  <AddToContext>true</AddToContext>
+  <Refresh>false</Refresh>
+ </CustomToolDef>
+</CustomToolDefList>
