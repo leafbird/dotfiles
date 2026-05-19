@@ -1,5 +1,10 @@
 # p4 / P4V 커스텀 툴
 
+현재 등록된 컨텍스트 메뉴:
+
+- **슬랙 공유 포맷** — submitted CL 정보를 ``` 로 감싸 클립보드 복사.
+- **Jira 이슈 열기** — CL description 에서 `NF-####` 키를 찾아 Jira 브라우저로 점프.
+
 ## 슬랙 공유 포맷 (slack-share)
 
 Submitted changelist 우클릭 컨텍스트 메뉴에서 한 번에 슬랙용 포맷을
@@ -46,3 +51,12 @@ Description:
   **Add to applicable context menus** 체크 확인.
 - PowerShell 창이 깜빡: `-WindowStyle Hidden` 으로 막아두었지만 일부 환경에서
   잠깐 보일 수 있다. `pwsh.exe` 가 있다면 `powershell.exe` 대신 써도 OK.
+
+## Jira 이슈 열기 (jira-open)
+
+선택한 CL 의 description 에서 첫 번째 `NF-\d+` 패턴을 찾아
+`https://madngine.atlassian.net/browse/NF-####` 를 기본 브라우저로 연다.
+패턴이 없으면 안내 메시지박스 표시.
+
+- 스크립트: [`jira-open.ps1`](jira-open.ps1)
+- Jira 인스턴스 호스트가 바뀌면 스크립트의 URL 상수만 수정.

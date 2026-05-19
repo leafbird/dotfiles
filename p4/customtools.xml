@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  P4V Custom Tool: 슬랙 공유 포맷
-  ===============================
-  Submitted changelist 우클릭 → '슬랙 공유 포맷' 선택 시
-  해당 CL 의 Change/Date/User/Description 을 ``` 로 감싸 클립보드에 복사한다.
+  P4V Custom Tools
+  ================
+  · 슬랙 공유 포맷  : submitted CL 정보(``` 감쌈)를 클립보드 복사
+  · Jira 이슈 열기 : CL description 의 NF-#### 키로 Jira 브라우저 열기
 
   설치:
     P4V → Tools → Manage Custom Tools... → Import Custom Tools...
     이 파일(customtools.xml)을 지정하면 아래 항목이 추가된다.
 
-  또는 %USERPROFILE%\.p4qt\customtools.xml 에 직접 머지해도 된다.
+  주의:
+    · Arguments 의 .ps1 절대경로는 머신마다 손으로 수정.
+    · %USERPROFILE% 같은 환경변수 금지 — P4V 가 %U 를 치환토큰으로 오해함.
 -->
 <CustomToolDefList varName="customtooldeflist">
  <CustomToolDef>
@@ -17,6 +19,20 @@
    <Name>슬랙 공유 포맷</Name>
    <Command>powershell.exe</Command>
    <Arguments>-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Users\choisungki\dotfiles\p4\slack-share.ps1 -Change %c</Arguments>
+   <Shortcut></Shortcut>
+  </Definition>
+  <Console>
+   <CloseOnExit>true</CloseOnExit>
+   <Show>false</Show>
+  </Console>
+  <AddToContext>true</AddToContext>
+  <Refresh>false</Refresh>
+ </CustomToolDef>
+ <CustomToolDef>
+  <Definition>
+   <Name>Jira 이슈 열기</Name>
+   <Command>powershell.exe</Command>
+   <Arguments>-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Users\choisungki\dotfiles\p4\jira-open.ps1 -Change %c</Arguments>
    <Shortcut></Shortcut>
   </Definition>
   <Console>
