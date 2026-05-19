@@ -15,6 +15,11 @@
 ## 코드 수정 규칙 (C# 프로젝트 한정)
 - C# 프로젝트에서는 코드 수정(Edit/Write)을 실행하기 전에 반드시 사용자에게 변경 내용을 설명하고 승인을 받는다. bypass permissions 모드와 무관하게 항상 적용.
 - 조사/탐색/빌드/테스트 등 코드 수정이 아닌 도구 사용은 자유롭게 진행한다.
+- **상수 인자 named-parameter 컨벤션**: 메서드/생성자 호출 시 리터럴 상수(`2`, `true`, `false`, `null`, `0` 등)를 인자로 넘길 때는 named-parameter 를 붙인다. 변수·필드·식은 그대로 둔다.
+  - ✅ `new AssetWithCountGameData(MountTicket, count: 2)`
+  - ✅ `DoSomething(target, ignoreCase: true, retryCount: 3)`
+  - ❌ `new AssetWithCountGameData(MountTicket, 2)`
+  - ❌ `DoSomething(target, true, 3)`
 
 <!-- 머신별 로컬 오버라이드 (파일 없으면 무시됨) -->
 @CLAUDE.local.md
