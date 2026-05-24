@@ -35,6 +35,9 @@ alias vim=nvim
 # zsh-completions
 autoload -U compinit && compinit
 
+# user-local bin (for starship 등 사용자 디렉토리 설치 도구들)
+export PATH="$HOME/.local/bin:$PATH"
+
 # starship
 eval "$(starship init zsh)"
 
@@ -267,7 +270,6 @@ elif [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
 fi
 
 # claude code
-export PATH="$HOME/.local/bin:$PATH"
 alias cc='claude --dangerously-skip-permissions'
 alias cdx='codex --dangerously-bypass-approvals-and-sandbox'
 
