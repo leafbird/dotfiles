@@ -59,7 +59,7 @@ Host leafbird
 	User florist
 
 
-Host ragflow
+Host hermes
 	HostName 192.168.50.33
 	User florist
 
