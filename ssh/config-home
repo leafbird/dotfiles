@@ -63,6 +63,10 @@ Host hermes
 	HostName 192.168.50.33
 	User florist
 
+Host kis-desk
+	HostName 192.168.50.35
+	User florist
+
 # tailnet -------------------
 Host st-buildwatch
 	HostName st-buildwatch
