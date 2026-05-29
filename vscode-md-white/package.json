@@ -1,0 +1,18 @@
+{
+  "name": "md-white-preview",
+  "displayName": "Markdown White Preview",
+  "description": "Forces a light GitHub-style theme on all Markdown previews (incl. Mermaid), globally.",
+  "version": "1.0.0",
+  "publisher": "choisungki",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "markdown.previewStyles": [
+      "./markdown-white.css"
+    ]
+  }
+}

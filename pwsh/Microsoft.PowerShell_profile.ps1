@@ -135,9 +135,9 @@ function web() {
   Start-Process $url
 }
 
-# batdiff
+# batdiff — git CLI 가 diff 생성, bat 은 하이라이트만 (bat --diff 의 libgit2 통합은 Windows 에서 unstaged 변경을 못 잡음)
 function batdiff() {
-  git diff --name-only --relative --diff-filter=d @args | ForEach-Object { bat --diff $_ }
+  git diff @args | bat --language=diff
 }
 
 function Use-VcVars() {

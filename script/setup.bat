@@ -125,6 +125,13 @@ if exist "%AHK_LNK%" (
     powershell -NoProfile -Command "$w=New-Object -ComObject WScript.Shell; $s=$w.CreateShortcut('%AHK_LNK%'); $s.TargetPath='%AHK_EXE%'; $s.Arguments='\"%AHK_SCRIPT%\"'; $s.WorkingDirectory='%DOTFILES%\vim'; $s.Save()" && echo [ OK ] esc_force_english startup shortcut || echo [FAIL] esc_force_english startup shortcut
 )
 
+:: ------- vscode markdown-white preview extension -------
+where code >nul 2>&1 && (
+    pwsh -NoProfile -File "%DOTFILES%\vscode-md-white\install-extension.ps1" && echo [ OK ] vscode md-white extension || echo [FAIL] vscode md-white extension
+) || (
+    echo [INFO] code CLI not found, skipping vscode md-white extension
+)
+
 echo.
 echo Done.
 popd

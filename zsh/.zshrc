@@ -215,8 +215,9 @@ else
   alias listen='netstat -tlnp'
 fi
 
+# git CLI 가 diff 생성, bat 은 하이라이트만 (bat --diff 의 libgit2 통합은 Windows 에서 unstaged 변경을 못 잡음)
 batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+    git diff "$@" | bat --language=diff
 }
 
 listvms() {

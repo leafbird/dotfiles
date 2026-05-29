@@ -1,0 +1,4 @@
+install-to-repo.ps1
+install-to-repo.sh
+.vscodeignore
+*.vsix
