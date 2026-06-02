@@ -22,8 +22,6 @@
   - ❌ `DoSomething(target, true, 3)`
 
 <!-- 워크노트 + 핸드오프 워크플로우 정의 (단일 원본). -->
-<!-- 동일 파일이 각 머신의 {worknote-root}/AGENTS.md 로도 심볼릭 링크되어 -->
-<!-- 워크노트 폴더에서 다른 에이전트(Cursor/Codex/Gemini 등)도 자동 픽업한다. -->
 @claude-shared/agents-worknotes.md
 
 <!-- 머신별 로컬 오버라이드 (파일 없으면 무시됨) -->
