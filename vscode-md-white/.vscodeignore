@@ -1,4 +1,4 @@
-install-to-repo.ps1
-install-to-repo.sh
+install-extension.ps1
+install-extension.sh
 .vscodeignore
 *.vsix
