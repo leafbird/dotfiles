@@ -34,6 +34,7 @@
 	directory = C:/Users/PC/dotfiles
 	directory = D:/Dev/md
 	directory = C:/Users/kjcks/dotfiles
+	directory = %(prefix)///wsl.localhost/Ubuntu/home/florist/.hermes
 [credential]
 	allowInsecureRepositories = true
 	helper = store
