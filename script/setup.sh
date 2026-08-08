@@ -30,6 +30,19 @@ for pkg in "${STOW_PACKAGES[@]}"; do
   fi
 done
 
+# --- tree-sitter CLI (nvim-treesitter main 브랜치 파서 컴파일에 필요) ---
+if command -v tree-sitter >/dev/null 2>&1; then
+  ok "tree-sitter: 이미 설치됨"
+elif command -v brew >/dev/null 2>&1; then
+  brew install tree-sitter-cli && ok "tree-sitter: brew 설치 완료" || warn "tree-sitter: brew 설치 실패"
+elif command -v cargo >/dev/null 2>&1; then
+  cargo install tree-sitter-cli && ok "tree-sitter: cargo 설치 완료" || warn "tree-sitter: cargo 설치 실패"
+elif command -v npm >/dev/null 2>&1; then
+  npm install -g tree-sitter-cli && ok "tree-sitter: npm 설치 완료" || warn "tree-sitter: npm 설치 실패"
+else
+  warn "tree-sitter: brew/cargo/npm 모두 없음, 수동 설치 필요"
+fi
+
 # --- SSH config (stow 구조가 아니므로 별도 처리) ---
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
