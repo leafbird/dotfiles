@@ -10,6 +10,29 @@
 
 카라비너에서 키보드 종류에 따라 `right_option` 혹은 `right_command`를 `f18`로 매핑.
 
+## 특정 키보드에서만 카라비너가 안 먹을 때
+
+무선 기계식 키보드 상당수는 키보드이면서 **동시에 마우스/포인터로도 HID 등록**된다.
+카라비너는 포인팅 디바이스를 기본적으로 무시하므로, 이런 키보드는 리맵이 통째로 동작하지 않는다.
+설정 파일이나 입력 모니터링 권한 문제로 착각하기 쉬우니 이것부터 확인할 것.
+
+`Settings > Devices`에서 해당 키보드의 `Modify events`를 켜주면 된다. 한 번만 해두면 유지된다.
+
+* FL·ESPORTS CMK75, NuPhy Air75 V2가 이 경우였다.
+* 같은 키보드라도 연결 방식(블루투스 / 2.4GHz 동글 / USB 유선)이 바뀌면 다른 기기로 잡힌다. 그때마다 한 번씩 등록해줘야 한다.
+* BLE 키보드는 vendor/product id가 0으로 잡히기도 한다. 이때 카라비너는 블루투스 주소(`device_address`)로 기기를 구분한다.
+
+카라비너 16.1.0 기준으로 새 기기를 자동 허용해주는 전역 옵션은 없다.
+GUI를 여는 대신 이 폴더의 스크립트로 등록할 수 있다.
+
+```
+./register-keyboards.py             # 등록
+./register-keyboards.py --dry-run   # 변경 없이 확인만
+```
+
+연결된 키보드 중 카라비너가 무시 중인 것을 찾아 **모든 프로필**에 등록한다.
+저장 전 `~/.config/karabiner/backups/`에 자동 백업한다.
+
 ## vim : insert -> normal mode 갈 때 영어 입력으로
 
 참고 : https://torbjorn.tistory.com/812
