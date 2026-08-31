@@ -128,6 +128,76 @@ function sshconfig() {
   [[ -n "$selection" ]] && eval "$selection"
 }
 
+# ssh 로컬 포트 포워딩 (터널)
+#
+#   tun                 # 기본값: moku 1455 (openclaw 로그인 콜백)
+#   tun n150 8006       # 다른 호스트/포트
+#   tun moku 8384 9384  # 로컬은 9384 로 받기 (포트 충돌 회피)
+#   tun ls              # 열려 있는 터널 목록
+#   tun close [포트|all] # 닫기 (인자 없으면 전부)
+#
+# ★ 원격 리스너의 바인딩 주소를 먼저 조회해서 목적지를 자동으로 맞춘다.
+#   IPv6 루프백([::1])에만 붙어 있는 서비스에 127.0.0.1 로 포워딩하면
+#   터널은 열리는데 연결만 거절돼서 원인 찾기가 아주 성가시다. (2026-08-31 openclaw 로그인)
+#
+# ★ ls/close 는 명령줄 모양이 아니라 SetEnv 표식(ZTUN=1)으로 터널을 식별한다.
+#   터미널 통합(ghostty 등)이 ssh 인자 앞에 -o 옵션을 끼워넣기 때문에
+#   'ssh -f -N ...' 같은 패턴 매칭은 환경에 따라 조용히 깨진다.
+function tun() {
+  local mark='SetEnv=ZTUN=1'
+  local host="${1:-moku}"
+
+  if [[ "$host" == "ls" ]]; then
+    pgrep -fl "$mark" || echo "열려 있는 터널 없음"
+    return 0
+  fi
+
+  if [[ "$host" == "close" ]]; then
+    local what="${2:-all}"
+    local pattern="$mark"
+    [[ "$what" != "all" ]] && pattern="${mark}.*-L ${what}:"
+
+    local pids=(${(f)"$(pgrep -f "$pattern")"})
+    if (( ${#pids[@]} == 0 )); then
+      echo "닫을 터널 없음"
+      return 0
+    fi
+    kill $pids && echo "터널 닫음: ${#pids[@]}개"
+    return 0
+  fi
+
+  local port="${2:-1455}"
+  local lport="${3:-$port}"
+
+  # 이미 로컬 포트가 물려 있으면 중단 (ExitOnForwardFailure 가 잡아주지만 메시지를 명확히)
+  if lsof -nP -iTCP:"$lport" -sTCP:LISTEN >/dev/null 2>&1; then
+    echo "로컬 ${lport} 포트가 이미 사용 중이다. 'tun ls' 로 확인하거나 세 번째 인자로 다른 로컬 포트를 줘라."
+    return 1
+  fi
+
+  # 원격에서 해당 포트를 듣고 있는 주소를 조회 → 127.0.0.1 / [::1] 판별
+  local bind
+  bind=$(ssh -o ConnectTimeout=8 "$host" \
+    "ss -ltnH 2>/dev/null | awk '{print \$4}' | grep -E ':${port}\$' | head -1" 2>/dev/null)
+
+  local target
+  case "$bind" in
+    "")        target="127.0.0.1"
+               echo "주의: ${host} 에서 ${port} 를 듣는 프로세스를 못 찾았다. 127.0.0.1 로 가정하고 연다." ;;
+    \[*)       target="[::1]" ;;
+    *)         target="127.0.0.1" ;;
+  esac
+
+  if ssh -f -N -o "$mark" -o ExitOnForwardFailure=yes -L "${lport}:${target}:${port}" "$host"; then
+    echo "터널 열림: localhost:${lport} → ${host} ${target}:${port}"
+    echo "  http://localhost:${lport}"
+    echo "  닫기: tun close ${lport}"
+  else
+    echo "터널 실패: ${host} ${target}:${port}"
+    return 1
+  fi
+}
+
 function pathlist() {
 # alias로 만들면 $PATH가 미리 evaluate 되면서 alias 자체에 고정되어 버린다.
 # alias pathlist="echo '$PATH' | tr ':' '\n'"
