@@ -5,6 +5,61 @@
 - **슬랙 공유 포맷** — submitted CL 정보를 ``` 로 감싸 클립보드 복사.
 - **Jira 이슈 열기** — CL description 에서 `NF-####` 키를 찾아 Jira 브라우저로 점프.
 
+## 설치
+
+**P4V 를 종료한 상태에서** 아래 한 줄을 PowerShell 에 붙여넣습니다.
+
+```powershell
+irm https://raw.githubusercontent.com/leafbird/dotfiles/main/p4/install.ps1 | iex
+```
+
+이 repo 를 이미 클론해 뒀다면 그 폴더에서 직접 실행해도 됩니다.
+
+```powershell
+.\install.ps1
+```
+
+설치가 끝나면 P4V 를 켜고 Submitted CL 을 우클릭하면 두 메뉴가 보입니다.
+
+### install.ps1 이 해주는 것
+
+- **머지** — 기존 커스텀 툴은 그대로 두고 같은 이름의 항목만 갈아끼웁니다.
+  P4V 의 `Import Custom Tools...` 는 **전체를 덮어쓰므로** 쓰던 툴이 날아갑니다.
+- **멱등** — 이미 올바로 등록돼 있으면 파일을 아예 건드리지 않습니다. 몇 번을
+  돌려도 결과가 같습니다. 스크립트를 다른 폴더로 옮겼을 때 다시 돌리면 경로만
+  갱신됩니다.
+- **경로 자동 결정** — `.ps1` 절대경로를 그 머신 기준으로 박아 넣습니다. 클론해
+  뒀으면 그 폴더를, 웹에서 바로 실행했으면 `%USERPROFILE%\.p4tools` 로 받아서
+  그쪽을 가리킵니다.
+- **백업** — 실제로 내용을 바꿀 때만 `customtools.xml.bak` 을 남깁니다.
+- **점검** — `p4.exe` 가 PATH 에 있는지, `P4CHARSET` 이 `utf8` 인지 확인해 경고합니다.
+
+### P4V 는 반드시 닫고
+
+P4V 는 `customtools.xml` 을 **시작할 때 읽고 종료할 때 되씁니다.** 켜둔 채로 설치하면
+P4V 를 닫는 순간 예전 내용으로 덮여 설치가 조용히 사라집니다. 스크립트가 이걸 검사해
+P4V 가 떠 있으면 멈춥니다. `-Force` 로 넘길 수는 있지만 그 뒤엔 P4V 를 재시작해야 합니다.
+
+### 옵션
+
+| 옵션 | 뜻 |
+|---|---|
+| `-SourceDir <경로>` | `.ps1` 을 여기서 가져다 씁니다. 생략하면 자동 판단 |
+| `-ToolsDir <경로>` | 웹에서 받을 때 놓을 위치. 기본 `%USERPROFILE%\.p4tools` |
+| `-CustomToolsPath <경로>` | P4V 정의 파일. 기본 `%USERPROFILE%\.p4qt\customtools.xml` |
+| `-Force` | P4V 가 떠 있어도 진행 |
+
+### 손으로 넣으려면
+
+`customtools.xml` 을 P4V 의 **Tools → Manage Custom Tools... → Import Custom Tools...**
+로 넣을 수도 있습니다. 단 위에 적은 대로 **기존 커스텀 툴이 덮어써지고**, `Arguments`
+안의 `.ps1` 절대경로를 그 머신에 맞게 손으로 고쳐야 합니다.
+
+> ⚠ `%USERPROFILE%` 같은 환경변수는 쓸 수 없습니다. P4V 가 `%U` 를 자기 치환 토큰으로
+> 오해해 `%c` 와 충돌하고, "More than one replaceable file argument of type %X is not
+> allowed" 에러로 실행을 거부합니다. 반드시 절대경로여야 하며, 그래서 install.ps1 이
+> 설치 시점에 경로를 박아 넣습니다.
+
 ## 슬랙 공유 포맷 (slack-share)
 
 Submitted changelist 우클릭 컨텍스트 메뉴에서 한 번에 슬랙용 포맷을
@@ -20,23 +75,6 @@ Description:
 [최성기] 서버 단위테스트 실패 수정
 - 탈것 유닛테스트 로직 넣으면서 기존 순차발급 id의 순서가 밀려나서 ...
 ```
-
-### 설치
-
-1. `customtools.xml` 의 **Arguments 안 .ps1 절대경로** 를 현재 머신에 맞게 수정.
-   - 기본값은 `C:\Users\choisungki\dotfiles\p4\slack-share.ps1`.
-   - 사용자명이나 dotfiles 위치가 다르면 그에 맞춰 통째로 바꿔야 한다.
-   - ⚠ **`%USERPROFILE%` 같은 환경변수는 못 쓴다.** P4V 가 `%U` 를 자기 치환
-     토큰으로 오해해서 `%c` 와 충돌, "More than one replaceable file argument
-     of type %X is not allowed" 에러로 실행 거부됨. 반드시 절대경로.
-2. P4V 메뉴: **Tools → Manage Custom Tools... → Import Custom Tools...**
-3. 수정한 `customtools.xml` 선택.
-4. Submitted 탭/Submitted 패널에서 CL 우클릭하면 메뉴에 **슬랙 공유 포맷** 등장.
-
-> P4V 가 이미 다른 커스텀 툴을 갖고 있다면 import 가 기존 정의를
-> 덮어쓸 수 있으니, `%USERPROFILE%\.p4qt\customtools.xml` 을 백업한 뒤
-> 머지하는 편이 안전하다. (이 경로 표기는 위 절대경로 규칙과 무관 —
-> Windows 탐색기/PowerShell 에서는 `%USERPROFILE%` 가 정상 해석된다.)
 
 ### 동작
 
