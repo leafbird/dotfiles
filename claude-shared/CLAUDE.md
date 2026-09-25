@@ -10,10 +10,10 @@
 - **"워크노트"**, **"핸드오프"** = `worknote` 스킬에서 정의. 워크노트·핸드오프·todo·진행 문서를 다루거나 워크노트 root(`CLAUDE.local.md` 에 정의) 안에서 작업할 때는 먼저 이 스킬을 읽는다.
 
 ## 시크릿 관리
-- 모든 스킬의 비밀번호·API 키·토큰은 **`~/.claude/skillsecrets.json`** 한 곳에 모은다. (0600, gitignore 됨)
+- 모든 스킬의 비밀번호·API 키·토큰은 **`~/.claude/skill-secrets.json`** 한 곳에 모은다. (0600, gitignore 됨)
 - 스킬 문서·스크립트·worknotes 에 시크릿을 평문으로 적지 않는다. 필요하면 이 파일에서 읽는다.
   ```bash
-  jq -r '."asus-router".password' ~/.claude/skillsecrets.json
+  jq -r '."asus-router".password' ~/.claude/skill-secrets.json
   ```
 - 새 시크릿이 생기면 기존 키 네이밍(서비스명 소문자-하이픈)을 따라 이 파일에 추가한다.
 
