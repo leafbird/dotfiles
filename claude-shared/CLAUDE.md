@@ -16,6 +16,14 @@
   jq -r '."asus-router".password' ~/.claude/skill-secrets.json
   ```
 - 새 시크릿이 생기면 기존 키 네이밍(서비스명 소문자-하이픈)을 따라 이 파일에 추가한다.
+- 이 파일은 git 으로 동기화되지 않는다. 새 장비에는 기존 장비에서 `scp` 로 복사하고 0600 으로 맞춘다.
+
+## 공유 스킬
+- 여러 장비가 함께 쓰는 자작 스킬은 **claude-synchronizer** repo 의 `shared-skills/<name>/` 에 둔다 (dotfiles 아님).
+- repo 위치는 장비·OS 마다 다르다: `$CLAUDE_WORKSPACE_DIR/claude-synchronizer` (Windows `$env:CLAUDE_WORKSPACE_DIR`).
+  변수가 없으면 설치된 공용 스킬 심링크를 따라가 찾는다 (예: `readlink ~/.claude/skills/worknote`).
+- 설치: repo 의 `scripts/install-skill.sh <name> --agent claude` (Windows `install-skill.ps1`) → `~/.claude/skills/<name>` 심링크. 장비 로컬 전용 스킬만 `~/.claude/skills/` 에 직접 둔다.
+- 공유 스킬 작성 규칙(hooks 금지, stdlib 우선 등)은 repo 의 `CLAUDE.md` 참조.
 
 ## Tool Preferences
 - MCP 방식 비선호. 가능하면 커스텀 스킬(slash command) + REST API 직접 호출 방식을 사용한다.
