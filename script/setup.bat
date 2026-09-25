@@ -93,15 +93,6 @@ if exist "%userprofile%\.claude\CLAUDE.md" (
 ) else (
     mklink "%userprofile%\.claude\CLAUDE.md" "%CLAUDE_MD_SOURCE%" && echo [ OK ] claude CLAUDE.md || echo [FAIL] claude CLAUDE.md
 )
-:: worknote 스킬: 워크노트 규칙은 필요할 때만 로드되는 스킬로 배포한다.
-if not exist "%userprofile%\.claude\skills" mkdir "%userprofile%\.claude\skills"
-if exist "%userprofile%\.claude\skills\worknote" (
-    echo [SKIP] claude skills/worknote already exists
-) else if not exist "%DOTFILES%\claude-shared\skills\worknote" (
-    echo [SKIP] claude skills/worknote source missing
-) else (
-    mklink /D "%userprofile%\.claude\skills\worknote" "%DOTFILES%\claude-shared\skills\worknote" && echo [ OK ] claude skills/worknote || echo [FAIL] claude skills/worknote
-)
 if not exist "%userprofile%\.claude\skills" mkdir "%userprofile%\.claude\skills"
 if exist "%userprofile%\.claude\skills\confluence" (
     echo [SKIP] claude skills/confluence already exists
