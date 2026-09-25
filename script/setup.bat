@@ -93,15 +93,14 @@ if exist "%userprofile%\.claude\CLAUDE.md" (
 ) else (
     mklink "%userprofile%\.claude\CLAUDE.md" "%CLAUDE_MD_SOURCE%" && echo [ OK ] claude CLAUDE.md || echo [FAIL] claude CLAUDE.md
 )
-:: agents-worknotes.md 는 CLAUDE.md 가 @claude-shared/agents-worknotes.md 로 import 한다.
-:: CLAUDE.md 심링크 기준 경로(~/.claude/claude-shared/)에 동일 파일을 링크해야 import 가 풀린다.
-if not exist "%userprofile%\.claude\claude-shared" mkdir "%userprofile%\.claude\claude-shared"
-if exist "%userprofile%\.claude\claude-shared\agents-worknotes.md" (
-    echo [SKIP] claude agents-worknotes.md already exists
-) else if not exist "%DOTFILES%\claude-shared\agents-worknotes.md" (
-    echo [SKIP] claude agents-worknotes.md source missing
+:: worknote 스킬: 워크노트 규칙은 필요할 때만 로드되는 스킬로 배포한다.
+if not exist "%userprofile%\.claude\skills" mkdir "%userprofile%\.claude\skills"
+if exist "%userprofile%\.claude\skills\worknote" (
+    echo [SKIP] claude skills/worknote already exists
+) else if not exist "%DOTFILES%\claude-shared\skills\worknote" (
+    echo [SKIP] claude skills/worknote source missing
 ) else (
-    mklink "%userprofile%\.claude\claude-shared\agents-worknotes.md" "%DOTFILES%\claude-shared\agents-worknotes.md" && echo [ OK ] claude agents-worknotes.md || echo [FAIL] claude agents-worknotes.md
+    mklink /D "%userprofile%\.claude\skills\worknote" "%DOTFILES%\claude-shared\skills\worknote" && echo [ OK ] claude skills/worknote || echo [FAIL] claude skills/worknote
 )
 if not exist "%userprofile%\.claude\skills" mkdir "%userprofile%\.claude\skills"
 if exist "%userprofile%\.claude\skills\confluence" (
