@@ -123,8 +123,17 @@ function sshset() {
   ln -s "$source" "$target"
 }
 
+# ★ Host 줄은 별칭을 여러 개 갖는다 (`Host pve-deb debian-13-test`).
+#   `^Host ` 를 `ssh ` 로만 바꾸면 `ssh pve-deb debian-13-test` 가 되고,
+#   ssh 는 두 번째 토큰을 **원격에서 실행할 명령**으로 읽는다.
+#   → 접속은 되는데 `bash: debian-13-test: command not found` 가 뜬다.
+#   그래서 **첫 별칭만** 쓴다. 와일드카드 항목(`Host *`)은 접속 대상이 아니라 제외.
 function sshconfig() {
-  local selection=$(grep -E "^Host\s+" ~/.ssh/config | sed -E 's/^Host /ssh /' | fzf)
+  local selection=$(grep -E '^Host[[:space:]]+' ~/.ssh/config \
+    | sed -E 's/^Host[[:space:]]+([^[:space:]]+).*/\1/' \
+    | grep -v '[*?]' \
+    | sed 's/^/ssh /' \
+    | fzf)
   [[ -n "$selection" ]] && eval "$selection"
 }
 

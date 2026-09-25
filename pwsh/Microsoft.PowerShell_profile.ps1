@@ -60,12 +60,18 @@ function sshset()
   New-Item -Path $target -ItemType SymbolicLink -Target $source
 }
 
+# ★ Host 줄은 별칭을 여러 개 갖는다 (`Host pve-deb debian-13-test`).
+#   `Host ` 를 `ssh ` 로만 바꾸면 `ssh pve-deb debian-13-test` 가 되고,
+#   ssh 는 두 번째 토큰을 원격에서 실행할 명령으로 읽는다
+#   → 접속은 되는데 `bash: debian-13-test: command not found` 가 뜬다.
+#   그래서 첫 별칭만 쓴다. 와일드카드 항목은 접속 대상이 아니라 제외.
 function sshconfig()
 {
-  Get-Content $env:USERPROFILE\.ssh\config | 
-    Select-String -Raw "(?<=^Host\s).*" | 
-    ForEach-Object { $_ -replace "^Host\s+", "ssh " } | 
-    fzf | 
+  Get-Content $env:USERPROFILE\.ssh\config |
+    Select-String -Raw "^Host\s+\S" |
+    ForEach-Object { $_ -replace "^Host\s+(\S+).*", 'ssh $1' } |
+    Where-Object { $_ -notmatch '[*?]' } |
+    fzf |
     Invoke-Expression
 }
 
