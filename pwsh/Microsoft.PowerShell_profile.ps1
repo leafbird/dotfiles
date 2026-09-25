@@ -174,6 +174,27 @@ function Use-VcVars() {
   Write-Host "Visual Studio C++ x64 build environment loaded."
 }
 
+# quick note — 클립보드 내용을 임시폴더에 md 로 저장하고 glow 로 띄운다 (zsh 판은 .zshrc 의 qn)
+function qn() {
+  $dir = Join-Path ([IO.Path]::GetTempPath()) "qn"
+  $file = Join-Path $dir "$(Get-Date -Format 'yyyyMMdd-HHmmss').md"
+  New-Item -Path $dir -ItemType Directory -Force | Out-Null
+
+  $content = Get-Clipboard -Raw
+  if ([string]::IsNullOrWhiteSpace($content)) {
+    Write-Host "qn: 클립보드가 비어 있습니다"
+    return
+  }
+  [IO.File]::WriteAllText($file, $content, [Text.UTF8Encoding]::new($false))
+
+  # glow -p 는 외부 less 가 필요하다. 없으면 glow 자체 TUI 뷰어로 띄운다.
+  if (Get-Command less -ErrorAction SilentlyContinue) {
+    glow -p -w ($Host.UI.RawUI.WindowSize.Width - 2) $file
+  } else {
+    glow -t $file
+  }
+}
+
 # claude code
 function cc() { claude --dangerously-skip-permissions @args }
 

@@ -303,6 +303,30 @@ listvms() {
   sh ~/dotfiles/pve/list_vms.sh
 }
 
+# quick note — 클립보드 내용을 임시폴더에 md 로 저장하고 glow 로 띄운다 (Windows 판은 pwsh 프로필의 qn)
+qn() {
+  local dir="${TMPDIR:-/tmp}/qn"
+  local file="$dir/$(date +%Y%m%d-%H%M%S).md"
+  mkdir -p "$dir"
+
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    pbpaste > "$file"
+  elif [[ -n "$WSL_DISTRO_NAME" ]]; then
+    powershell.exe -NoProfile -Command '[Console]::OutputEncoding=[Text.Encoding]::UTF8; Get-Clipboard -Raw' | tr -d '\r' > "$file"
+  elif [[ -n "$WAYLAND_DISPLAY" ]]; then
+    wl-paste --no-newline > "$file"
+  else
+    xclip -selection clipboard -o > "$file"
+  fi
+
+  if [[ ! -s "$file" ]]; then
+    echo "qn: 클립보드가 비어 있습니다"
+    rm -f "$file"
+    return 1
+  fi
+  glow -p -w $(( COLUMNS - 2 )) "$file"
+}
+
 # WSL: share ssh key
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
   # Configure ssh forwarding
