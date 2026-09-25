@@ -1,0 +1,4 @@
+[wsl2]
+# Hermes 용 Windows 네이티브 serena(127.0.0.1:9122)에 WSL 안의 Hermes 가 붙으려면
+# WSL↔Windows 의 127.0.0.1 을 공유해야 한다. mirrored 모드가 그것을 해준다. (Win11 22H2+)
+networkingMode=mirrored
