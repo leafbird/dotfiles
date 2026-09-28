@@ -44,6 +44,18 @@
 - Orca 워커를 스폰하거나 오케스트레이션(Run/Task/Dispatch)을 다루기 **전에** `orca-worker` 스킬을 먼저 읽는다.
   실제로 겪은 함정과 대응이 거기 있다 — 성급한 stall 판정, 디스패치 id 갈림, 에이전트별 특성.
 
+## git 프로젝트 작업 방식 (main 은 오케스트레이션 자리)
+- git 저장소의 main 체크아웃에서는 구상·설계·계획·오케스트레이션·검증만 한다. 코드는 워크트리에서 고친다.
+  - **잔정리**(한두 파일, 설계·API 변화 없음 — 오타·문서·설정값·한 줄 수정): 그 저장소의 `chore` 워크트리에서
+    직접 고친다. 쓰기 전에 fetch 후 `git switch -C chore origin/main` 으로 맞춘다(변경이 남아 있으면 멈추고 보고).
+    없으면 그때 `orca worktree create --name chore` 로 만든다.
+  - **그 외**: 새 Orca 워크트리 + 워커. 나는 TASK 스펙·감독·검증만 한다.
+- 워커도 잔정리도 커밋까지만. push·머지·태그는 확인받고 한다. 잔정리 반영은 main 체크아웃에서
+  `git merge --ff-only chore` 후 push.
+- `git config claude.mainGuard true` 인 저장소는 main 브랜치의 추적 파일 Edit/Write 를 훅(`~/.claude/hooks/main-guard.ps1`)이
+  막는다. 무시 파일(`CLAUDE.local.md` 등)은 통과. Bash 로 우회하지 않는다.
+- 설계·진행 문서는 저장소가 아니라 워크노트 `<root>/<repo 이름>/` 에 둔다(`worknote` 스킬).
+
 ## 코드 수정 규칙 (C# 프로젝트 한정)
 - C# 프로젝트에서 **여러 파일에 걸친 변경, 설계·구조 변경, public API·시그니처 변경, 파일 삭제**는 실행 전에 변경 내용을 설명하고 승인을 받는다. bypass permissions 모드와 무관하게 적용.
 - 한두 파일 안의 국소 수정(버그 수정, 컨벤션 적용 등)은 바로 진행하고, 끝난 뒤 무엇을 바꿨는지 보고한다.
