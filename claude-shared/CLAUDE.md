@@ -55,6 +55,7 @@
 - `git config claude.mainGuard true` 인 저장소는 main 브랜치의 파일 Edit/Write 를 훅(claude-synchronizer 의 `main-guard` 플러그인)이
   막는다. 무시 파일(`CLAUDE.local.md` 등)은 통과. Bash 로 우회하지 않는다.
 - 설계·진행 문서는 저장소가 아니라 워크노트 `<root>/<repo 이름>/` 에 둔다(`worknote` 스킬).
+- **예외**: `~/dotfiles` 와 `~/.claude` 는 이 절을 적용하지 않는다. main 체크아웃에서 바로 고치고 커밋한다.
 
 ## 코드 수정 규칙 (C# 프로젝트 한정)
 - C# 프로젝트에서 **여러 파일에 걸친 변경, 설계·구조 변경, public API·시그니처 변경, 파일 삭제**는 실행 전에 변경 내용을 설명하고 승인을 받는다. bypass permissions 모드와 무관하게 적용.
