@@ -52,7 +52,7 @@
   - **그 외**: 새 Orca 워크트리 + 워커. 나는 TASK 스펙·감독·검증만 한다.
 - 워커도 잔정리도 커밋까지만. push·머지·태그는 확인받고 한다. 잔정리 반영은 main 체크아웃에서
   `git merge --ff-only chore` 후 push.
-- `git config claude.mainGuard true` 인 저장소는 main 브랜치의 추적 파일 Edit/Write 를 훅(`~/.claude/hooks/main-guard.ps1`)이
+- `git config claude.mainGuard true` 인 저장소는 main 브랜치의 파일 Edit/Write 를 훅(claude-synchronizer 의 `main-guard` 플러그인)이
   막는다. 무시 파일(`CLAUDE.local.md` 등)은 통과. Bash 로 우회하지 않는다.
 - 설계·진행 문서는 저장소가 아니라 워크노트 `<root>/<repo 이름>/` 에 둔다(`worknote` 스킬).
 
