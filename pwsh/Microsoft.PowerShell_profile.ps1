@@ -174,7 +174,7 @@ function Use-VcVars() {
   Write-Host "Visual Studio C++ x64 build environment loaded."
 }
 
-# quick note — 클립보드 내용을 임시폴더에 md 로 저장하고 bat 으로 띄운다 (zsh 판은 .zshrc 의 qn)
+# quick note — 클립보드 내용을 임시폴더에 md 로 저장하고 glow 로 그려 띄운다 (zsh 판은 .zshrc 의 qn)
 function qn() {
   $dir = Join-Path ([IO.Path]::GetTempPath()) "qn"
   $file = Join-Path $dir "$(Get-Date -Format 'yyyyMMdd-HHmmss').md"
@@ -187,16 +187,18 @@ function qn() {
   }
   [IO.File]::WriteAllText($file, $content, [Text.UTF8Encoding]::new($false))
 
-  # glow -t(TUI)는 Windows 에서 본문을 안 그리고 빈 화면만 띄운다(glow 3.0.0).
-  # bat 은 페이저로 less 를 쓰는데 Windows 엔 없어 그냥 출력하고 끝난다.
-  # Git for Windows 에 딸린 less 를 페이저로 넘긴다 (q 로 종료).
+  # glow -t(TUI)는 Windows 에서 본문을 안 그리고 빈 화면만 띄운다(glow 3.0.0). TUI 없이 그려서 less 로 넘긴다.
+  # - 출력이 파이프면 -s auto 가 색을 끈다. -s dark 로 고정한다.
+  # - 표준입력이 파이프면 파일 인자를 무시하고 그걸 읽는다. glow 앞에 파이프를 붙이지 않는다.
+  # less 는 Windows 에 없어 Git for Windows 에 딸린 것을 쓴다 (q 로 종료).
+  $width = try { [Math]::Min(140, [Console]::WindowWidth - 2) } catch { 100 }
   $git = Get-Command git -ErrorAction SilentlyContinue
   $less = if ($git) { Join-Path (Split-Path (Split-Path $git.Source)) 'usr\bin\less.exe' }
   if ($less -and (Test-Path $less)) {
     $env:LESSCHARSET = 'utf-8'
-    bat --language md --style header --paging always --pager "`"$less`" -R" $file
+    glow -s dark -w $width $file | & $less -R
   } else {
-    bat --language md --style header $file
+    glow -s dark -w $width $file
   }
 }
 
