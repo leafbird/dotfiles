@@ -9,6 +9,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
+# 업데이트 Y/n 프롬프트가 자동화로 주입한 명령의 첫 글자를 삼키므로 묻지 않고 자동 업데이트
+zstyle ':omz:update' mode auto
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
