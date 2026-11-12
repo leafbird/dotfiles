@@ -1,0 +1,49 @@
+#!/bin/zsh
+# usage: towebp-gui [-o outDir] [files...]
+# 파일이 없으면 사진(Photos) 앱에서 선택한 사진을 내보내 변환한다.
+# 결과 파일은 클립보드에 복사(메신저에 Cmd+V)하고 Finder 에서 선택해 보여 준다.
+here=${0:A:h}
+outdir=""
+[[ $1 == -o ]] && { outdir=$2; shift 2 }
+
+notify() { osascript -e "display notification \"$2\" with title \"$1\"" >/dev/null 2>&1 }
+
+tmp=$(mktemp -d -t towebp-gui) || exit 1
+trap 'rm -rf "$tmp"' EXIT
+
+if (( $# == 0 )); then
+  osascript - "$tmp" <<'OSA' >/dev/null 2>"$tmp/err"
+on run argv
+  set dest to POSIX file (item 1 of argv) as alias
+  tell application "Photos"
+    set sel to selection
+    if sel is {} then error "사진 앱에서 선택된 사진이 없습니다"
+    export sel to dest without using originals
+  end tell
+end run
+OSA
+  if (( $? )); then notify "WebP 변환 실패" "$(tail -1 "$tmp/err" | tr -d '"')"; exit 1; fi
+  set -- "$tmp"/*(.N)
+  (( $# )) || { notify "WebP 변환 실패" "내보낸 사진이 없습니다"; exit 1 }
+  [[ -n $outdir ]] || outdir=$HOME/Downloads/WebP
+fi
+
+args=()
+[[ -n $outdir ]] && args=(-o "$outdir")
+outs=("${(@f)$("$here/towebp" "${args[@]}" "$@" 2>"$tmp/convert.err")}")
+outs=(${outs:#})
+(( ${#outs} )) || { notify "WebP 변환 실패" "$(tail -1 "$tmp/convert.err" | tr -d '"')"; exit 1 }
+
+osascript -l JavaScript - "${outs[@]}" <<'JXA' >/dev/null
+ObjC.import('AppKit');
+function run(argv) {
+  const urls = argv.map(p => $.NSURL.fileURLWithPath(p));
+  const pb = $.NSPasteboard.generalPasteboard;
+  pb.clearContents;
+  pb.writeObjects($(urls));
+  $.NSWorkspace.sharedWorkspace.activateFileViewerSelectingURLs($(urls));
+}
+JXA
+
+total=$(stat -f %z "${outs[@]}" | awk '{s+=$1} END {printf "%.1f", s/1048576}')
+notify "WebP ${#outs}장 변환 완료" "클립보드에 복사됨 (${total}MB) - 메신저에서 Cmd+V"

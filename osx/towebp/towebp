@@ -1,0 +1,57 @@
+#!/bin/zsh
+# usage: towebp [-s maxEdge] [-q quality] [-o outDir] files...
+# 사진(JPEG/HEIC/PNG 등)을 메신저 공유용 WebP 로 변환한다. 긴 변 축소 + sRGB 변환 + 메타데이터(위치 등) 제거.
+setopt pipefail
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+
+max=${TOWEBP_MAX:-2048}
+quality=${TOWEBP_QUALITY:-80}
+outdir=""
+while getopts "s:q:o:" opt; do
+  case $opt in
+    s) max=$OPTARG ;;
+    q) quality=$OPTARG ;;
+    o) outdir=$OPTARG ;;
+    *) print -u2 "usage: towebp [-s maxEdge] [-q quality] [-o outDir] files..."; exit 2 ;;
+  esac
+done
+shift $((OPTIND - 1))
+(( $# )) || { print -u2 "usage: towebp [-s maxEdge] [-q quality] [-o outDir] files..."; exit 2 }
+
+srgb="/System/Library/ColorSync/Profiles/sRGB Profile.icc"
+tmp=$(mktemp -d -t towebp) || exit 1
+trap 'rm -rf "$tmp"' EXIT
+
+fail=0
+for src in "$@"; do
+  [[ -f $src ]] || { print -u2 "skip (not a file): $src"; fail=1; continue }
+  dir=${outdir:-${src:h}}
+  mkdir -p "$dir" 2>/dev/null
+  [[ -w $dir ]] || { dir=$HOME/Downloads/WebP; mkdir -p "$dir" }
+  out="$dir/${src:t:r}.webp"
+  n=1
+  while [[ -e $out ]]; do out="$dir/${src:t:r}-$((n++)).webp"; done
+
+  # sips 는 EXIF 회전을 픽셀에 적용하지 않으므로 직접 돌린다.
+  rot=()
+  case $(sips -g orientation "$src" 2>/dev/null | awk '/orientation:/{print $2}') in
+    3) rot=(-r 180) ;;
+    6) rot=(-r 90) ;;
+    8) rot=(-r 270) ;;
+  esac
+
+  # sips -Z 는 작은 이미지도 키우므로 긴 변이 max 를 넘을 때만 건다.
+  resize=()
+  long=$(sips -g pixelWidth -g pixelHeight "$src" 2>/dev/null | awk '/pixel/{if($2>m)m=$2}END{print m+0}')
+  (( long > max )) && resize=(-Z "$max")
+
+  mid="$tmp/${src:t:r}.png"
+  if ! sips -s format png "${resize[@]}" "${rot[@]}" --matchTo "$srgb" "$src" --out "$mid" >/dev/null 2>&1; then
+    print -u2 "fail (decode): $src"; fail=1; continue
+  fi
+  if ! cwebp -quiet -q "$quality" -m 6 -metadata none "$mid" -o "$out"; then
+    print -u2 "fail (encode): $src"; fail=1; continue
+  fi
+  print -r -- "$out"
+done
+exit $fail
